@@ -1,22 +1,19 @@
 import React from "react";
 import MonacoEditor from "react-monaco-editor";
+import { connect } from "react-redux";
 
 class Editor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      code: "// type your code..."
-    };
   }
   editorDidMount(editor, monaco) {
-    console.log("editorDidMount", editor);
     editor.focus();
   }
   onChange = (newValue, e) => {
     console.log("onChange", newValue, e);
   };
   render() {
-    const code = this.state.code;
+    const code = this.props.code;
     const options = {
       selectOnLineNumbers: true
     };
@@ -35,4 +32,8 @@ class Editor extends React.Component {
   }
 }
 
-export default Editor;
+const mapStateToProps = state => ({
+  code: state.text.code
+});
+
+export default connect(mapStateToProps)(Editor);

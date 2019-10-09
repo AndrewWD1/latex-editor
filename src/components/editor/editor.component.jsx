@@ -1,21 +1,21 @@
 import React from "react";
 import MonacoEditor from "react-monaco-editor";
 import { connect } from "react-redux";
+import { updateText } from "../../redux/text/text.actions";
 
 class Editor extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   editorDidMount(editor, monaco) {
     editor.focus();
   }
   onChange = (newValue, e) => {
-    console.log("onChange", newValue, e);
+    this.props.updateText(newValue);
   };
   render() {
     const code = this.props.code;
     const options = {
-      selectOnLineNumbers: true
+      selectOnLineNumbers: true,
+      fontSize: 15,
+      fontLigatures: true
     };
     return (
       <MonacoEditor
@@ -36,4 +36,11 @@ const mapStateToProps = state => ({
   code: state.text.code
 });
 
-export default connect(mapStateToProps)(Editor);
+const mapDispatchToProps = dispatch => ({
+  updateText: code => dispatch(updateText(code))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Editor);

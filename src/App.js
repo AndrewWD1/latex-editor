@@ -1,6 +1,14 @@
 import React from "react";
-import Editor from "./components/editor/editor.component";
+import EditorViewerContainer from "./components/editor-viewer-container/editor-viewer-container.component";
+import Header from "./components/header/header.component";
 
-const App = () => <Editor />;
+import "./App.scss";
+
+const App = () => (
+  <div className="app">
+    <Header />
+    <EditorViewerContainer />
+  </div>
+);
 
 export default App;

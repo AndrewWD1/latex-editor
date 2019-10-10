@@ -5,6 +5,10 @@ import { updateText } from "../../redux/text/text.actions";
 
 class Editor extends React.Component {
   editorDidMount(editor, monaco) {
+    /**
+     * ! Change monaco editor options here!!!!!!
+     */
+    monaco.editor.setTheme("vs-dark");
     editor.focus();
   }
   onChange = (newValue, e) => {
@@ -15,11 +19,16 @@ class Editor extends React.Component {
     const options = {
       selectOnLineNumbers: true,
       fontSize: 15,
-      fontLigatures: true
+      fontLigatures: true,
+      fontFamily: "Fira Code",
+      wordWrap: "on",
+      parameterHints: {
+        cycle: "true"
+      }
     };
     return (
       <MonacoEditor
-        width={this.props.width / 2}
+        width={this.props.width}
         height={this.props.height}
         language="javascript"
         theme="vs-dark"

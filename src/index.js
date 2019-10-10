@@ -6,9 +6,12 @@ import App from "./App";
 
 /**
  * Creating a Web app to write and view Latex files.
+ * TODO: Move the dropdown clicked state up to redux, so that you can make it so that if a user clicks anywhere else on the screen the dropdown hides itself
  * TODO: Create folder structure on Front-End, should be toggled with Ctrl-b
  * TODO: Create User-Profile for Front-End
- * TODO: Decide where screen size state should live and how best to resize editor
+ * TODO: Users should be able to edit theme
+ * TODO: Users should be able to pick font
+ * TODO: Add a small div sliver between the editor and viewer so that you can cahnge the sizing
  * ! Create Back end on heroku that will compile pdf and send back to Front-End
  */
 

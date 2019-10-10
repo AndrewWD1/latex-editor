@@ -9,10 +9,10 @@ const EditorViewerContainer = ({ width, height }) => {
   return (
     <div
       className="editor-viewer-container"
-      style={{ height: `${height - 72}` }}
+      style={{ height: `${height - 73}` }}
     >
-      <Editor width={width} height={height - 72} />
-      <Viewer width={width} height={height - 75} />
+      {true ? <Editor width={width} height={height - 73} /> : null}
+      {true ? <Viewer width={width} height={height - 76} /> : null}
     </div>
   );
 };

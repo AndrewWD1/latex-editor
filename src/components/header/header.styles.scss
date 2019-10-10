@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 70px;
+  width: 100vw;
+
+  .title {
+    font-size: 3rem;
+    padding: 0.5rem;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5rem;
+  }
+
+  .link {
+    font-size: 1.5rem;
+    padding: 0.25rem;
+    margin: 0.25rem;
+    text-decoration: none;
+    color: black;
+  }
+}

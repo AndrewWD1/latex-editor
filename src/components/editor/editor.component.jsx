@@ -19,8 +19,8 @@ class Editor extends React.Component {
     };
     return (
       <MonacoEditor
-        width="800"
-        height="600"
+        width={this.props.width / 2}
+        height={this.props.height}
         language="javascript"
         theme="vs-dark"
         value={code}

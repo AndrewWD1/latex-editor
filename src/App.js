@@ -13,6 +13,7 @@ const App = ({ handleResize }) => {
       window.removeEventListener("resize", handleResize);
     };
   });
+
   return (
     <div className="app">
       <Header />

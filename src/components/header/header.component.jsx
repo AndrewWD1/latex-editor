@@ -1,27 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import DropdownMenu from "../dropdown-menu/dropdown-menu.component";
+import { changeDropdowns } from "../../redux/dropdown-menu/dropdown-menu.actions";
+import { dropdownMenuDropped } from "../../redux/dropdown-menu/dropdown-menu.types";
 
 import "./header.styles.scss";
 
-const Header = () => {
-  const [dropdownClicked, setDropdownClicked] = useState(null);
-
-  const handleDropdownClick = dropdown => {
-    if (dropdown === dropdownClicked) {
-      setDropdownClicked(null);
-    } else {
-      setDropdownClicked(dropdown);
-    }
-  };
-
+const Header = ({ dropdownMenuClicked, changeDropdowns }) => {
   return (
     <div className="header">
       <div className="title">Latex Editor</div>
       <div className="dropper-container">
-        <div className="dropper" onClick={() => handleDropdownClick("Files")}>
+        <div
+          className="dropper"
+          onClick={() => changeDropdowns(dropdownMenuDropped.FILES_OPEN)}
+        >
           Files
         </div>
-        {dropdownClicked === "Files" ? (
+        {dropdownMenuClicked === dropdownMenuDropped.FILES_OPEN ? (
           <DropdownMenu
             dropdownItems={["hello", "there"]}
             top="55"
@@ -30,11 +26,13 @@ const Header = () => {
         ) : null}
         <div
           className="dropper"
-          onClick={() => handleDropdownClick("Editor Options")}
+          onClick={() =>
+            changeDropdowns(dropdownMenuDropped.EDITOR_OPTIONS_OPEN)
+          }
         >
           Editor Options
         </div>
-        {dropdownClicked === "Editor Options" ? (
+        {dropdownMenuClicked === dropdownMenuDropped.EDITOR_OPTIONS_OPEN ? (
           <DropdownMenu
             dropdownItems={["hello", "there"]}
             top="55"
@@ -48,4 +46,15 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = state => ({
+  dropdownMenuClicked: state.dropdownMenu.dropdownMenuClicked
+});
+
+const mapDispatchToProps = dispatch => ({
+  changeDropdowns: dropdown => dispatch(changeDropdowns(dropdown))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);

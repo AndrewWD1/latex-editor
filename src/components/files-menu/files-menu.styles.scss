@@ -1,0 +1,31 @@
+.files-menu {
+  position: absolute;
+  width: 240px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: #272727;
+  color: #c4b7b7;
+  z-index: 5;
+  top: 55px;
+  left: 250px;
+  -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+
+  .files-items {
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .files-item {
+    width: 220px;
+    font-size: 1.2rem;
+    padding: 0.2rem;
+    margin: 0.3rem;
+    border-bottom: 1px solid #080808;
+  }
+}

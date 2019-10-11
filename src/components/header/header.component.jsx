@@ -1,12 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
-import DropdownMenu from "../dropdown-menu/dropdown-menu.component";
+import EditorOptionsMenu from "../editor-options-menu/editor-options-menu.component";
+import FilesMenu from "../files-menu/files-menu.component";
 import { changeDropdowns } from "../../redux/dropdown-menu/dropdown-menu.actions";
 import { dropdownMenuDropped } from "../../redux/dropdown-menu/dropdown-menu.types";
+import { toggleEditorViewer } from "../../redux/screen/screen.actions";
 
 import "./header.styles.scss";
 
-const Header = ({ dropdownMenuClicked, changeDropdowns }) => {
+const Header = ({
+  dropdownMenuClicked,
+  changeDropdowns,
+  toggleEditorViewer
+}) => {
   return (
     <div className="header">
       <div className="title">Latex Editor</div>
@@ -18,11 +24,7 @@ const Header = ({ dropdownMenuClicked, changeDropdowns }) => {
           Files
         </div>
         {dropdownMenuClicked === dropdownMenuDropped.FILES_OPEN ? (
-          <DropdownMenu
-            dropdownItems={["hello", "there"]}
-            top="55"
-            left="250"
-          />
+          <FilesMenu />
         ) : null}
         <div
           className="dropper"
@@ -33,14 +35,14 @@ const Header = ({ dropdownMenuClicked, changeDropdowns }) => {
           Editor Options
         </div>
         {dropdownMenuClicked === dropdownMenuDropped.EDITOR_OPTIONS_OPEN ? (
-          <DropdownMenu
-            dropdownItems={["hello", "there"]}
-            top="55"
-            left="350"
-          />
+          <EditorOptionsMenu />
         ) : null}
-        <div className="dropper">Toggle Editor</div>
-        <div className="dropper">Toggle Viewer</div>
+        <div className="dropper" onClick={() => toggleEditorViewer("editor")}>
+          Toggle Editor
+        </div>
+        <div className="dropper" onClick={() => toggleEditorViewer("viewer")}>
+          Toggle Viewer
+        </div>
       </div>
     </div>
   );
@@ -51,7 +53,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  changeDropdowns: dropdown => dispatch(changeDropdowns(dropdown))
+  changeDropdowns: dropdown => dispatch(changeDropdowns(dropdown)),
+  toggleEditorViewer: component => dispatch(toggleEditorViewer(component))
 });
 
 export default connect(

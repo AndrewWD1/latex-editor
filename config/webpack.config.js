@@ -546,7 +546,7 @@ module.exports = function(webpackEnv) {
       ),
       new MonacoWebpackPlugin({
         // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
-        languages: ["javascript"]
+        languages: ["javascript", "python"]
       }),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.

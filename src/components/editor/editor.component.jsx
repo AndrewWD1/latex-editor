@@ -8,9 +8,9 @@ class Editor extends React.Component {
     /**
      * ! Change monaco editor options here!!!!!!
      */
-    monaco.editor.setTheme("vs-dark");
-    editor.focus();
+    //monaco.editor.setTheme("vs-dark");
   }
+
   onChange = (newValue, e) => {
     this.props.updateText(newValue);
   };
@@ -19,8 +19,8 @@ class Editor extends React.Component {
     const options = {
       selectOnLineNumbers: true,
       fontSize: 15,
-      fontLigatures: true,
-      fontFamily: "Fira Code",
+      fontLigatures: this.props.editorOptions.fontLigatures,
+      fontFamily: this.props.editorOptions.font,
       wordWrap: "on",
       parameterHints: {
         cycle: "true"
@@ -30,8 +30,8 @@ class Editor extends React.Component {
       <MonacoEditor
         width={this.props.width}
         height={this.props.height}
-        language="javascript"
-        theme="vs-dark"
+        language={this.props.editorOptions.langauge}
+        theme={this.props.editorOptions.theme}
         value={code}
         options={options}
         onChange={this.onChange}
@@ -42,7 +42,8 @@ class Editor extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  code: state.text.code
+  code: state.text.code,
+  editorOptions: state.editorOptions
 });
 
 const mapDispatchToProps = dispatch => ({

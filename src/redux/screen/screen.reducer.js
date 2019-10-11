@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   windowHeight: window.innerHeight,
   windowWidth: window.innerWidth,
   editorViewerToggle: "both",
-  foldersToggle: true
+  foldersToggle: false
 };
 
 export const screenReducer = (state = INITIAL_STATE, action) => {

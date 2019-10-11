@@ -6,7 +6,13 @@ export const FolderContainer = ({ height, width }) => (
     className="folder-container"
     style={{ height: `${height}px`, width: `${width}px` }}
   >
-    <div>hello</div>
-    <div>there</div>
+    <div className="folder">Folder</div>
+    <div className="folder-item">file</div>
+    <div className="folder-item">file</div>
+    <div className="folder">Folder</div>
+    <div className="folder-item">file</div>
+    <div className="folder-item">file</div>
+    <div className="folder">Folder</div>
+    <div className="folder-item">file</div>
   </div>
 );

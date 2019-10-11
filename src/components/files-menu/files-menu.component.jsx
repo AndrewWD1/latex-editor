@@ -5,6 +5,7 @@ import "./files-menu.styles.scss";
 
 const FilesMenu = ({ toggleFolders }) => {
   const initialOptions = {
+    Save: () => {},
     Folders: toggleFolders,
     Profile: () => {},
     "Other Options": () => {}

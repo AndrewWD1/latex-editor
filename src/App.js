@@ -9,6 +9,7 @@ import "./App.scss";
 const App = ({ handleResize }) => {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
+
     return () => {
       window.removeEventListener("resize", handleResize);
     };

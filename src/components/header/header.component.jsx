@@ -20,6 +20,13 @@ const Header = ({
         <div
           className="dropper"
           onClick={() => changeDropdowns(dropdownMenuDropped.FILES_OPEN)}
+          onMouseOver={() => {
+            if (
+              dropdownMenuClicked === dropdownMenuDropped.EDITOR_OPTIONS_OPEN
+            ) {
+              changeDropdowns(dropdownMenuDropped.FILES_OPEN);
+            }
+          }}
         >
           Files
         </div>
@@ -31,16 +38,43 @@ const Header = ({
           onClick={() =>
             changeDropdowns(dropdownMenuDropped.EDITOR_OPTIONS_OPEN)
           }
+          onMouseOver={() => {
+            if (dropdownMenuClicked === dropdownMenuDropped.FILES_OPEN) {
+              changeDropdowns(dropdownMenuDropped.EDITOR_OPTIONS_OPEN);
+            }
+          }}
         >
           Editor Options
         </div>
         {dropdownMenuClicked === dropdownMenuDropped.EDITOR_OPTIONS_OPEN ? (
           <EditorOptionsMenu />
         ) : null}
-        <div className="dropper" onClick={() => toggleEditorViewer("editor")}>
+        <div
+          className="dropper"
+          onClick={() => toggleEditorViewer("editor")}
+          onMouseOver={() => {
+            if (
+              dropdownMenuClicked === dropdownMenuDropped.EDITOR_OPTIONS_OPEN ||
+              dropdownMenuClicked === dropdownMenuDropped.FILES_OPEN
+            ) {
+              changeDropdowns(dropdownMenuDropped.DROPDOWNS_CLOSED);
+            }
+          }}
+        >
           Toggle Editor
         </div>
-        <div className="dropper" onClick={() => toggleEditorViewer("viewer")}>
+        <div
+          className="dropper"
+          onClick={() => toggleEditorViewer("viewer")}
+          onMouseOver={() => {
+            if (
+              dropdownMenuClicked === dropdownMenuDropped.EDITOR_OPTIONS_OPEN ||
+              dropdownMenuClicked === dropdownMenuDropped.FILES_OPEN
+            ) {
+              changeDropdowns(dropdownMenuDropped.DROPDOWNS_CLOSED);
+            }
+          }}
+        >
           Toggle Viewer
         </div>
       </div>

@@ -24,7 +24,8 @@ class Editor extends React.Component {
       wordWrap: "on",
       parameterHints: {
         cycle: "true"
-      }
+      },
+      renderIndentGuides: false
     };
     return (
       <MonacoEditor

@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { toggleFolders } from "../../redux/screen/screen.actions";
+import { saveTextToFile } from "../../redux/files/files.actions";
 import "./files-menu.styles.scss";
 
-const FilesMenu = ({ toggleFolders }) => {
+const FilesMenu = ({ toggleFolders, saveTextToFile }) => {
   const initialOptions = {
-    Save: () => {},
+    Save: saveTextToFile,
     Folders: toggleFolders,
     Profile: () => {},
     "Other Options": () => {}
@@ -25,7 +26,8 @@ const FilesMenu = ({ toggleFolders }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  toggleFolders: () => dispatch(toggleFolders())
+  toggleFolders: () => dispatch(toggleFolders()),
+  saveTextToFile: () => dispatch(saveTextToFile())
 });
 
 export default connect(

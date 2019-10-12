@@ -1,7 +1,7 @@
 import React from "react";
 import Editor from "../editor/editor.component";
 import Viewer from "../viewer/viewer.component";
-import { FolderContainer } from "../folder-container/folder-container.component";
+import FolderContainer from "../folder-container/folder-container.component";
 import { connect } from "react-redux";
 import { changeDropdowns } from "../../redux/dropdown-menu/dropdown-menu.actions";
 import { dropdownMenuDropped } from "../../redux/dropdown-menu/dropdown-menu.types";

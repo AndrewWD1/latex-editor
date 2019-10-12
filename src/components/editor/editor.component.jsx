@@ -4,11 +4,7 @@ import { connect } from "react-redux";
 import { updateText } from "../../redux/files/files.actions";
 
 class Editor extends React.Component {
-  editorDidMount(editor, monaco) {
-    /**
-     * Change monaco editor options here!!!!!!
-     */
-  }
+  editorDidMount(editor, monaco) {}
 
   onChange = (newValue, e) => {
     this.props.updateText(newValue);

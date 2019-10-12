@@ -13,7 +13,9 @@ const EditorViewerContainer = ({
   dropdownMenuClicked,
   closeDropdownsOnClick,
   editorViewerToggle,
-  foldersToggle
+  foldersToggle,
+  folder,
+  file
 }) => {
   let dynamicWidth = foldersToggle ? width - 200 : width;
 
@@ -36,9 +38,19 @@ const EditorViewerContainer = ({
         <Editor width={dynamicWidth} height={height - 73} />
       ) : null}
       {editorViewerToggle === "both" ? (
-        <Viewer width={dynamicWidth / 2} height={height - 76} />
+        <Viewer
+          folder={folder}
+          file={file}
+          width={dynamicWidth / 2}
+          height={height - 76}
+        />
       ) : editorViewerToggle === "editor" ? (
-        <Viewer width={dynamicWidth} height={height - 76} />
+        <Viewer
+          folder={folder}
+          file={file}
+          width={dynamicWidth}
+          height={height - 76}
+        />
       ) : null}
     </div>
   );
@@ -49,7 +61,9 @@ const mapStateToProps = state => ({
   height: state.screen.windowHeight,
   editorViewerToggle: state.screen.editorViewerToggle,
   dropdownMenuClicked: state.dropdownMenu.dropdownMenuClicked,
-  foldersToggle: state.screen.foldersToggle
+  foldersToggle: state.screen.foldersToggle,
+  folder: state.folders.currentFolder,
+  file: state.folders.currentFile
 });
 const mapDipsatchToProps = dispatch => ({
   closeDropdownsOnClick: () =>

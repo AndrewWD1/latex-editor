@@ -6,11 +6,7 @@ export const updateText = code => ({
 });
 
 export const saveTextToFile = (folder, file) => ({
-  type: TextActionTypes.SAVE_TEXT_TO_FILE,
-  payload: {
-    folder,
-    file
-  }
+  type: TextActionTypes.SAVE_TEXT_TO_FILE
 });
 
 export const switchCurrentFile = (folder, file) => ({

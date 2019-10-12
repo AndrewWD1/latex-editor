@@ -1,8 +1,15 @@
 import React from "react";
-import PdfFile from "../../assets/Doumont_Resume.pdf";
+import { connect } from "react-redux";
+import { selectPDFLink } from "../../redux/files/files.selectors";
 
-const Viewer = ({ width, height }) => (
-  <iframe id="PDF" title="PDF" width={width} height={height} src={PdfFile} />
-);
+const Viewer = ({ width, height, pdfLink }) => {
+  return (
+    <iframe id="PDF" title="PDF" width={width} height={height} src={pdfLink} />
+  );
+};
 
-export default Viewer;
+const mapStateToProps = (state, ownProps) => ({
+  pdfLink: selectPDFLink(ownProps.folder, ownProps.file)(state)
+});
+
+export default connect(mapStateToProps)(Viewer);

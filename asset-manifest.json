@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/latex-editor/static/css/main.ed5ff077.chunk.css",
-    "main.js": "/latex-editor/static/js/main.e7dc3c2f.chunk.js",
-    "main.js.map": "/latex-editor/static/js/main.e7dc3c2f.chunk.js.map",
+    "main.css": "/latex-editor/static/css/main.b002b150.chunk.css",
+    "main.js": "/latex-editor/static/js/main.46db47d9.chunk.js",
+    "main.js.map": "/latex-editor/static/js/main.46db47d9.chunk.js.map",
     "runtime-main.js": "/latex-editor/static/js/runtime-main.406849e0.js",
     "runtime-main.js.map": "/latex-editor/static/js/runtime-main.406849e0.js.map",
     "static/css/2.78442bce.chunk.css": "/latex-editor/static/css/2.78442bce.chunk.css",
-    "static/js/2.682e3742.chunk.js": "/latex-editor/static/js/2.682e3742.chunk.js",
-    "static/js/2.682e3742.chunk.js.map": "/latex-editor/static/js/2.682e3742.chunk.js.map",
+    "static/js/2.f592029c.chunk.js": "/latex-editor/static/js/2.f592029c.chunk.js",
+    "static/js/2.f592029c.chunk.js.map": "/latex-editor/static/js/2.f592029c.chunk.js.map",
     "static/js/3.2d9913c2.chunk.js": "/latex-editor/static/js/3.2d9913c2.chunk.js",
     "static/js/3.2d9913c2.chunk.js.map": "/latex-editor/static/js/3.2d9913c2.chunk.js.map",
     "static/js/4.e7ddf0bb.chunk.js": "/latex-editor/static/js/4.e7ddf0bb.chunk.js",
@@ -15,17 +15,16 @@
     "editor.worker.js": "/latex-editor/editor.worker.js",
     "editor.worker.js.map": "/latex-editor/editor.worker.js.map",
     "index.html": "/latex-editor/index.html",
-    "precache-manifest.1751c77299f07fab51648b2de216c578.js": "/latex-editor/precache-manifest.1751c77299f07fab51648b2de216c578.js",
+    "precache-manifest.cfbf13b225a5501bc96763f597ed3a6e.js": "/latex-editor/precache-manifest.cfbf13b225a5501bc96763f597ed3a6e.js",
     "service-worker.js": "/latex-editor/service-worker.js",
     "static/css/2.78442bce.chunk.css.map": "/latex-editor/static/css/2.78442bce.chunk.css.map",
-    "static/css/main.ed5ff077.chunk.css.map": "/latex-editor/static/css/main.ed5ff077.chunk.css.map",
-    "static/media/Doumont_Resume.pdf": "/latex-editor/static/media/Doumont_Resume.95cb8f82.pdf"
+    "static/css/main.b002b150.chunk.css.map": "/latex-editor/static/css/main.b002b150.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.406849e0.js",
     "static/css/2.78442bce.chunk.css",
-    "static/js/2.682e3742.chunk.js",
-    "static/css/main.ed5ff077.chunk.css",
-    "static/js/main.e7dc3c2f.chunk.js"
+    "static/js/2.f592029c.chunk.js",
+    "static/css/main.b002b150.chunk.css",
+    "static/js/main.46db47d9.chunk.js"
   ]
 }

@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/latex-editor/editor.worker.js"
   },
   {
-    "revision": "eb9079162f0b9632a42341dbab8d8315",
+    "revision": "e56544692ee02beb004bf9bafcc52cac",
     "url": "/latex-editor/index.html"
   },
   {

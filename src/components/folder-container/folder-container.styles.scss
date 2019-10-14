@@ -4,4 +4,16 @@
   flex-direction: column;
   padding: 20px;
   color: #c4b7b7;
+
+  .arrow-span {
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: flex-end;
+
+    .arrow-container {
+      transform: scaleX(-1);
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+  }
 }

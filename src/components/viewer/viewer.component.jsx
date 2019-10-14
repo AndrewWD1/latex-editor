@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { selectPDFLink } from "../../redux/files/files.selectors";
 
 const Viewer = ({ width, height, pdfLink }) => {
   return (
     <iframe
-      allow-same-origin
       id="PDF"
+      onLoad={e => {
+        console.log("Pdf Loaded");
+      }}
       title="PDF"
       width={width}
       height={height}
-      src={""}
+      src={pdfLink}
     />
   );
 };

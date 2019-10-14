@@ -30,7 +30,7 @@ const EditorViewerContainer = ({
       }}
     >
       {foldersToggle ? (
-        <FolderContainer width={200} height={height - 74} />
+        <FolderContainer width={140} height={height - 74} />
       ) : null}
       {editorViewerToggle === "both" ? (
         <Editor width={dynamicWidth / 2} height={height - 73} />

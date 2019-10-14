@@ -2,36 +2,48 @@
   padding-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  width: 180px;
+  width: 130px;
   padding: 0.2rem;
   margin: 0px;
 
   .folder-bar {
     display: flex;
     flex-direction: row;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     cursor: pointer;
   }
 
   .folder-title {
     margin: 0 0.6rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   .file {
-    display: flex;
-    flex-direction: row;
-    width: 140px;
-    font-size: 1.2rem;
-    padding: 0.2rem;
-    margin-left: 40px;
+    width: 110px;
+    font-size: 0.9rem;
+    padding: 0.2rem 0;
+    margin-left: 20px;
     border-bottom: 1px solid #080808;
     cursor: pointer;
-    svg {
-      align-self: center;
-    }
-  }
 
-  .file-title {
-    margin: 0 0.4rem;
+    .file-title {
+      width: auto;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      position: relative;
+      z-index: 100;
+
+      svg {
+        margin-right: 0.4rem;
+      }
+
+      &:hover {
+        white-space: nowrap;
+        overflow: visible;
+      }
+    }
   }
 }

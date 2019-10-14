@@ -44,8 +44,10 @@ const Folder = ({ folderName, folderFiles, switchCurrentFile }) => {
               className="file"
               onClick={() => switchCurrentFile(folderName, file)}
             >
-              <FileSelector fileType={file.slice(file.lastIndexOf("."))} />
-              <div className="file-title">{file}</div>
+              <div className="file-title">
+                <FileSelector fileType={file.slice(file.lastIndexOf("."))} />
+                {file}
+              </div>
             </div>
           ))
         : null}

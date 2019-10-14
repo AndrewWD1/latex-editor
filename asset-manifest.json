@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/latex-editor/static/css/main.b002b150.chunk.css",
-    "main.js": "/latex-editor/static/js/main.e47ee159.chunk.js",
-    "main.js.map": "/latex-editor/static/js/main.e47ee159.chunk.js.map",
+    "main.css": "/latex-editor/static/css/main.001318ad.chunk.css",
+    "main.js": "/latex-editor/static/js/main.a77f7a37.chunk.js",
+    "main.js.map": "/latex-editor/static/js/main.a77f7a37.chunk.js.map",
     "runtime-main.js": "/latex-editor/static/js/runtime-main.406849e0.js",
     "runtime-main.js.map": "/latex-editor/static/js/runtime-main.406849e0.js.map",
-    "static/css/2.78442bce.chunk.css": "/latex-editor/static/css/2.78442bce.chunk.css",
-    "static/js/2.f592029c.chunk.js": "/latex-editor/static/js/2.f592029c.chunk.js",
-    "static/js/2.f592029c.chunk.js.map": "/latex-editor/static/js/2.f592029c.chunk.js.map",
+    "static/css/2.283f984a.chunk.css": "/latex-editor/static/css/2.283f984a.chunk.css",
+    "static/js/2.82b939c6.chunk.js": "/latex-editor/static/js/2.82b939c6.chunk.js",
+    "static/js/2.82b939c6.chunk.js.map": "/latex-editor/static/js/2.82b939c6.chunk.js.map",
     "static/js/3.2d9913c2.chunk.js": "/latex-editor/static/js/3.2d9913c2.chunk.js",
     "static/js/3.2d9913c2.chunk.js.map": "/latex-editor/static/js/3.2d9913c2.chunk.js.map",
     "static/js/4.e7ddf0bb.chunk.js": "/latex-editor/static/js/4.e7ddf0bb.chunk.js",
@@ -15,16 +15,20 @@
     "editor.worker.js": "/latex-editor/editor.worker.js",
     "editor.worker.js.map": "/latex-editor/editor.worker.js.map",
     "index.html": "/latex-editor/index.html",
-    "precache-manifest.ac5fe03850b9f9171b17f239fccffb78.js": "/latex-editor/precache-manifest.ac5fe03850b9f9171b17f239fccffb78.js",
+    "precache-manifest.3f5caf36fd88f8c6df03d197261a9fbf.js": "/latex-editor/precache-manifest.3f5caf36fd88f8c6df03d197261a9fbf.js",
     "service-worker.js": "/latex-editor/service-worker.js",
-    "static/css/2.78442bce.chunk.css.map": "/latex-editor/static/css/2.78442bce.chunk.css.map",
-    "static/css/main.b002b150.chunk.css.map": "/latex-editor/static/css/main.b002b150.chunk.css.map"
+    "static/css/2.283f984a.chunk.css.map": "/latex-editor/static/css/2.283f984a.chunk.css.map",
+    "static/css/main.001318ad.chunk.css.map": "/latex-editor/static/css/main.001318ad.chunk.css.map",
+    "static/media/closed-folder.7085356c.svg": "/latex-editor/static/media/closed-folder.7085356c.svg",
+    "static/media/js-file.b4c2c6ee.svg": "/latex-editor/static/media/js-file.b4c2c6ee.svg",
+    "static/media/open-folder.76271a35.svg": "/latex-editor/static/media/open-folder.76271a35.svg",
+    "static/media/tex-file.2577366f.svg": "/latex-editor/static/media/tex-file.2577366f.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.406849e0.js",
-    "static/css/2.78442bce.chunk.css",
-    "static/js/2.f592029c.chunk.js",
-    "static/css/main.b002b150.chunk.css",
-    "static/js/main.e47ee159.chunk.js"
+    "static/css/2.283f984a.chunk.css",
+    "static/js/2.82b939c6.chunk.js",
+    "static/css/main.001318ad.chunk.css",
+    "static/js/main.a77f7a37.chunk.js"
   ]
 }

@@ -70,22 +70,27 @@ const EditorViewerContainer = ({
         ></div>
       ) : null}
 
-      {/* The below element is added t ocover the viewer iframe so that the onMouseUp and onMouseMove events work*/}
-      <div
-        style={{
-          position: "absolute",
-          width: "100px",
-          height: "100px",
-          backgroundColor: "transparent",
-          height: height - 73,
-          width: dynamicWidth / 2 + divider - 3,
-          left: `${
-            foldersToggle
-              ? dynamicWidth / 2 + 181 + divider
-              : dynamicWidth / 2 + 1 + divider
-          }px`
-        }}
-      ></div>
+      {/* The below element is added t ocover the viewer iframe 
+      while resizer is clicked. This must be done because the 
+      iframe is its on browser windwo and consumes all mouse 
+      events itself. But if we just left it covered all the 
+      time, none of the iframes functionality would work
+       */}
+      {resizerClicked ? (
+        <div
+          style={{
+            position: "absolute",
+            backgroundColor: "transparent",
+            height: height - 73,
+            width: dynamicWidth / 2 + divider - 3,
+            left: `${
+              foldersToggle
+                ? dynamicWidth / 2 + 181 + divider
+                : dynamicWidth / 2 + 1 + divider
+            }px`
+          }}
+        ></div>
+      ) : null}
 
       {editorViewerToggle === "both" ? (
         <Viewer

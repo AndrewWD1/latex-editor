@@ -9,6 +9,9 @@ const Viewer = ({ width, height, pdfLink }) => {
       onLoad={e => {
         console.log("Pdf Loaded");
       }}
+      onMouseMove={e => {
+        console.log(e);
+      }}
       title="PDF"
       width={width}
       height={height}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Editor from "../editor/editor.component";
 import Viewer from "../viewer/viewer.component";
 import FolderContainer from "../folder-container/folder-container.component";
@@ -17,7 +17,9 @@ const EditorViewerContainer = ({
   folder,
   file
 }) => {
-  let dynamicWidth = foldersToggle ? width - 200 : width;
+  const [resizerClicked, setResizerClicked] = useState(false);
+  const dynamicWidth = foldersToggle ? width - 200 : width;
+  const [divider, setDivider] = useState(0);
 
   return (
     <div
@@ -28,27 +30,75 @@ const EditorViewerContainer = ({
           closeDropdownsOnClick();
         }
       }}
+      onMouseMove={e => {
+        if (resizerClicked) {
+          setDivider(
+            foldersToggle
+              ? e.clientX - dynamicWidth / 2 - 180
+              : e.clientX - dynamicWidth / 2
+          );
+          console.log(divider);
+        }
+      }}
+      onMouseUp={() => {
+        setResizerClicked(false);
+      }}
     >
       {foldersToggle ? (
         <FolderContainer width={140} height={height - 74} />
       ) : null}
       {editorViewerToggle === "both" ? (
-        <Editor width={dynamicWidth / 2} height={height - 73} />
+        <Editor width={dynamicWidth / 2 + divider} height={height - 73} />
       ) : editorViewerToggle === "viewer" ? (
-        <Editor width={dynamicWidth} height={height - 73} />
+        <Editor width={dynamicWidth + divider} height={height - 73} />
       ) : null}
+
+      {editorViewerToggle === "both" ? (
+        <div
+          style={{
+            left: `${
+              foldersToggle
+                ? dynamicWidth / 2 + 178 + divider
+                : dynamicWidth / 2 - 2 + divider
+            }px`,
+            height: `${height - 73}px`
+          }}
+          className="resize-divider"
+          onMouseDown={() => {
+            setResizerClicked(true);
+          }}
+        ></div>
+      ) : null}
+
+      {/* The below element is added t ocover the viewer iframe so that the onMouseUp and onMouseMove events work*/}
+      <div
+        style={{
+          position: "absolute",
+          width: "100px",
+          height: "100px",
+          backgroundColor: "transparent",
+          height: height - 73,
+          width: dynamicWidth / 2 + divider - 3,
+          left: `${
+            foldersToggle
+              ? dynamicWidth / 2 + 181 + divider
+              : dynamicWidth / 2 + 1 + divider
+          }px`
+        }}
+      ></div>
+
       {editorViewerToggle === "both" ? (
         <Viewer
           folder={folder}
           file={file}
-          width={dynamicWidth / 2}
+          width={dynamicWidth / 2 - divider}
           height={height - 76}
         />
       ) : editorViewerToggle === "editor" ? (
         <Viewer
           folder={folder}
           file={file}
-          width={dynamicWidth}
+          width={dynamicWidth - divider}
           height={height - 76}
         />
       ) : null}

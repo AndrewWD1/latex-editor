@@ -1,7 +1,7 @@
 import { dropdownMenuChange, dropdownMenuDropped } from "./dropdown-menu.types";
 
 const INITIAL_STATE = {
-  dropdownMenuClicked: dropdownMenuChange.DROPDOWNS_CLOSED
+  dropdownMenuClicked: dropdownMenuDropped.DROPDOWNS_CLOSED
 };
 
 export const dropdownMenuReducer = (state = INITIAL_STATE, action) => {

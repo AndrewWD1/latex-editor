@@ -3,3 +3,13 @@
   display: flex;
   flex-direction: row;
 }
+.resize-divider {
+  width: 5px;
+  background: transparent;
+  position: absolute;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.185);
+    cursor: col-resize;
+  }
+}

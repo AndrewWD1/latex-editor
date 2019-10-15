@@ -12,13 +12,13 @@ const FileSelector = ({ fileType }) => {
   switch (fileType) {
     case ".js":
       return (
-        <svg viewBox="0 0 60 55" width="1.2rem" height="1.2rem">
+        <svg viewBox="0 0 60 55" width="20px" height="20px">
           <JSFile />
         </svg>
       );
     default:
       return (
-        <svg viewBox="0 0 60 55" width="1.2rem" height="1.2rem">
+        <svg viewBox="0 0 60 55" width="20px" height="20px">
           <TexFile />
         </svg>
       );

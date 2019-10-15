@@ -25,7 +25,7 @@ const EditorViewerContainer = ({
     <div
       className="editor-viewer-container"
       style={{ height: `${height - 73}` }}
-      onClick={() => {
+      onMouseDown={() => {
         if (dropdownMenuClicked !== dropdownMenuDropped.DROPDOWNS_CLOSED) {
           closeDropdownsOnClick();
         }
@@ -37,7 +37,6 @@ const EditorViewerContainer = ({
               ? e.clientX - dynamicWidth / 2 - 180
               : e.clientX - dynamicWidth / 2
           );
-          console.log(divider);
         }
       }}
       onMouseUp={() => {

@@ -9,7 +9,7 @@
 import { editorOptionsActionTypes } from "./editor-options.types";
 
 const INITIAL_STATE = {
-  language: "python",
+  language: "javascript",
   theme: "vs-dark",
   font: "Fira Code",
   fontLigatures: true

@@ -4,12 +4,13 @@ const INITIAL_STATE = {
   windowHeight: window.innerHeight,
   windowWidth: window.innerWidth,
   editorViewerToggle: "both",
-  foldersToggle: false
+  foldersToggle: false,
+  resizerClicked: false
 };
 
 export const screenReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case screenActionTypes.HANDLE_RESIZE:
+    case screenActionTypes.HANDLE_WINDOW_RESIZE:
       return {
         ...state,
         windowHeight: window.innerHeight,
@@ -30,6 +31,11 @@ export const screenReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         foldersToggle: !state.foldersToggle
+      };
+    case screenActionTypes.SWITCH_RESIZER_CLICKED:
+      return {
+        ...state,
+        resizerClicked: action.payload
       };
     default:
       return state;

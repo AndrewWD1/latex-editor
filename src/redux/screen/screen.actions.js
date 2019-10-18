@@ -17,3 +17,8 @@ export const switchResizerClicked = bool => ({
   type: screenActionTypes.SWITCH_RESIZER_CLICKED,
   payload: bool
 });
+
+export const moveDivider = e => ({
+  type: screenActionTypes.MOVE_DIVIDER,
+  payload: e
+});

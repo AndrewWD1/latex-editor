@@ -56,7 +56,8 @@ const mapStateToProps = state => ({
   editorOptions: state.editorOptions,
   height: state.screen.windowHeight,
   editorViewerToggle: state.screen.editorViewerToggle,
-  dynamicWidth: selectDynamicWidth(state)
+  dynamicWidth: selectDynamicWidth(state),
+  divider: state.screen.divider
 });
 
 const mapDispatchToProps = dispatch => ({

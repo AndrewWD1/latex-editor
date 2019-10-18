@@ -5,12 +5,10 @@ import "./folder-container.styles.scss";
 
 import Folder from "../folder/folder.component";
 
-const FolderContainer = ({ height, width, userFolders, toggleFolders }) => {
+const FolderContainer = ({ userFolders, toggleFolders, foldersToggle }) => {
+  if (!foldersToggle) return null;
   return (
-    <div
-      className="folder-container"
-      style={{ height: `${height}px`, width: `${width}px` }}
-    >
+    <div className="folder-container">
       <div>
         {Object.keys(userFolders).map(folder => (
           <Folder
@@ -30,7 +28,8 @@ const FolderContainer = ({ height, width, userFolders, toggleFolders }) => {
 };
 
 const mapStateToProps = state => ({
-  userFolders: state.folders.userFolders
+  userFolders: state.folders.userFolders,
+  foldersToggle: state.screen.foldersToggle
 });
 
 const mapDispatchToProps = dispatch => ({

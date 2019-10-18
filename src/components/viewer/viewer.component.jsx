@@ -29,7 +29,8 @@ const mapStateToProps = (state, ownProps) => ({
   pdfLink: selectPDFLink(ownProps.folder, ownProps.file)(state),
   dynamicWidth: selectDynamicWidth(state),
   height: state.screen.windowHeight,
-  editorViewerToggle: state.screen.editorViewerToggle
+  editorViewerToggle: state.screen.editorViewerToggle,
+  divider: state.screen.divider
 });
 
 export default connect(mapStateToProps)(Viewer);

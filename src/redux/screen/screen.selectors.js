@@ -5,5 +5,5 @@ const selectScreen = state => state.screen;
 export const selectDynamicWidth = createSelector(
   [selectScreen],
   screen =>
-    screen.foldersToggle ? screen.windowWidth - 200 : screen.windowWidth
+    screen.foldersToggle ? screen.windowWidth - 180 : screen.windowWidth
 );

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { selectDynamicWidth } from "../../redux/screen/screen.selectors";
+import { moveDivider } from "../../redux/screen/screen.actions";
 
 /* This element is added t0 cover the viewer iframe 
 while resizer is clicked. This must be done because the 
@@ -40,4 +41,11 @@ const mapStateToProps = state => ({
   resizerClicked: state.screen.resizerClicked
 });
 
-export default connect(mapStateToProps)(ResizeCover);
+const mapDispatchToProps = dispatch => ({
+  moveDivider: e => dispatch(moveDivider(e))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ResizeCover);

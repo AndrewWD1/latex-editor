@@ -5,7 +5,8 @@ const INITIAL_STATE = {
   windowWidth: window.innerWidth,
   editorViewerToggle: "both",
   foldersToggle: false,
-  resizerClicked: false
+  resizerClicked: false,
+  divider: 0
 };
 
 export const screenReducer = (state = INITIAL_STATE, action) => {
@@ -37,6 +38,50 @@ export const screenReducer = (state = INITIAL_STATE, action) => {
         ...state,
         resizerClicked: action.payload
       };
+    case screenActionTypes.MOVE_DIVIDER:
+      if (state.foldersToggle) {
+        if (action.payload.clientX < 230) {
+          return {
+            ...state,
+            editorViewerToggle: "editor",
+            resizerClicked: false,
+            divider: 0
+          };
+        }
+        if (action.payload.clientX > state.windowWidth - 180 + 130) {
+          return {
+            ...state,
+            editorViewerToggle: "viewer",
+            resizerClicked: false,
+            divider: 0
+          };
+        }
+        return {
+          ...state,
+          divider: action.payload.clientX - (state.windowWidth - 180) / 2 - 180
+        };
+      } else {
+        if (action.payload.clientX < 50) {
+          return {
+            ...state,
+            editorViewerToggle: "editor",
+            resizerClicked: false,
+            divider: 0
+          };
+        }
+        if (action.payload.clientX > state.windowWidth - 50) {
+          return {
+            ...state,
+            editorViewerToggle: "viewer",
+            resizerClicked: false,
+            divider: 0
+          };
+        }
+        return {
+          ...state,
+          divider: action.payload.clientX - state.windowWidth / 2
+        };
+      }
     default:
       return state;
   }

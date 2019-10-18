@@ -33,7 +33,7 @@ const EditorViewerContainer = ({
       <Editor />
       <ResizeDivider />
       <ResizeCover />
-      <Viewer folder={folder} file={file} />)
+      <Viewer folder={folder} file={file} />
     </div>
   );
 };

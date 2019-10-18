@@ -1,0 +1,21 @@
+.sign-in {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(59, 61, 97);
+  border-radius: 4px;
+  width: 200px;
+  padding: 5px 20px 15px 20px;
+
+  .label {
+    font-size: 1.2rem;
+    padding: 5px 0px;
+    color: rgb(192, 192, 192);
+  }
+
+  .input {
+    border: none;
+    border-radius: 3px;
+    font-size: 1.2rem;
+    background-color: rgb(158, 158, 158);
+  }
+}

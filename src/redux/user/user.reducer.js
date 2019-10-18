@@ -1,4 +1,5 @@
 const INITIAL_STATE = {
+  signedIn: false,
   firstName: null,
   lastName: null,
   email: null

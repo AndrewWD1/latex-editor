@@ -1,13 +1,14 @@
 .folder-container {
-  width: 140px;
+  width: 160px;
   background-color: #272727;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  justify-content: space-between;
+  padding: 10px;
   color: #c4b7b7;
 
   .arrow-span {
-    margin: 0.5rem 0;
+    margin: 0;
     display: flex;
     justify-content: flex-end;
 

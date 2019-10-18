@@ -1,3 +1,5 @@
+import { userActionTypes } from "./user.types";
+
 const INITIAL_STATE = {
   signedIn: false,
   firstName: null,
@@ -7,6 +9,11 @@ const INITIAL_STATE = {
 
 export const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case userActionTypes.SIGN_IN:
+      return {
+        ...state,
+        signedIn: true
+      };
     default:
       return state;
   }

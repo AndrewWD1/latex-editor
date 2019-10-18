@@ -12,13 +12,13 @@ const FileSelector = ({ fileType }) => {
   switch (fileType) {
     case ".js":
       return (
-        <svg viewBox="0 0 60 55" width="20px" height="20px">
+        <svg viewBox="0 0 60 55" width="15px" height="15px">
           <JSFile />
         </svg>
       );
     default:
       return (
-        <svg viewBox="0 0 60 55" width="20px" height="20px">
+        <svg viewBox="0 0 60 55" width="15px" height="15px">
           <TexFile />
         </svg>
       );
@@ -29,10 +29,7 @@ const Folder = ({ folderName, folderFiles, switchCurrentFile }) => {
   const [fileToggle, setFileToggle] = useState(false);
 
   return (
-    <div
-      className="folder"
-      style={{ borderBottom: fileToggle ? "none" : "1px solid #080808" }}
-    >
+    <div className="folder">
       <div className="folder-bar" onClick={() => setFileToggle(!fileToggle)}>
         {fileToggle ? <OpenFolderIcon /> : <ClosedFolderIcon />}
         <div className="folder-title">{folderName}</div>

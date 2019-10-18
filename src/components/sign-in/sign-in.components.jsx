@@ -1,14 +1,21 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+
+import { signIn } from "../../redux/user/user.actions";
 
 import "./sign-in.styles.scss";
 
-const SignIn = () => {
+const SignIn = ({ signIn }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
 
   return (
     <form className="sign-in">
+      <div className="title">
+        LATEX EDITOR
+        <br /> SIGN IN
+      </div>
       <label className="label">First Name</label>
       <input
         value={firstName}
@@ -28,9 +35,23 @@ const SignIn = () => {
         className="input"
         onChange={e => setPassword(e.target.value)}
       />
-      <div></div>
+      <div className="sign-ins">
+        <div className="sign-in-button" onClick={signIn}>
+          Sign in
+        </div>
+        <div className="sign-in-button" onClick={signIn}>
+          Register
+        </div>
+      </div>
     </form>
   );
 };
 
-export default SignIn;
+const mapDispatchToProps = dispatch => ({
+  signIn: () => dispatch(signIn())
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SignIn);

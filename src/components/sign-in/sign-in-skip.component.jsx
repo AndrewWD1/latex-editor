@@ -1,18 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { signIn } from "../../redux/user/user.actions";
+import { signInDefault } from "../../redux/user/user.actions";
 
 import "./sign-in.styles.scss";
 
-const SignInSkip = ({ signIn }) => (
-  <div className="skip-sign-in-button" onClick={signIn}>
+const SignInSkip = ({ signInDefault }) => (
+  <div className="skip-sign-in-button" onClick={signInDefault}>
     Skip sign in to view App
   </div>
 );
 
 const mapDispatchToProps = dispatch => ({
-  signIn: () => dispatch(signIn())
+  signInDefault: () => dispatch(signInDefault())
 });
 
 export default connect(

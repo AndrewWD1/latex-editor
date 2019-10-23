@@ -44,6 +44,7 @@ export const folderReducer = (state = INITIAL_STATE, action) => {
         ...state,
         code: action.payload
       };
+
     case TextActionTypes.SAVE_TEXT_TO_FILE:
       return {
         ...state,
@@ -55,6 +56,7 @@ export const folderReducer = (state = INITIAL_STATE, action) => {
           }
         }
       };
+
     case TextActionTypes.SWITCH_CURRENT_FILE:
       return {
         ...state,
@@ -62,6 +64,56 @@ export const folderReducer = (state = INITIAL_STATE, action) => {
         currentFile: action.payload.file,
         code: state.userFolders[action.payload.folder][action.payload.file]
       };
+
+    case TextActionTypes.ADD_FILE:
+      console.log(action.payload);
+      return {
+        ...state,
+        userFolders: {
+          ...state.userFolders,
+          [action.payload]: {
+            ...state.userFolders[action.payload],
+            "new file": ""
+          }
+        },
+        pdfLinks: {
+          ...state.pdfLinks,
+          [action.payload]: {
+            ...state.pdfLinks[action.payload],
+            "new file": "https://andrewwd1.github.io/Doumont_Resume.pdf"
+          }
+        }
+      };
+
+    case TextActionTypes.CHANGE_FILE_NAME:
+      const newState = {
+        ...state,
+        userFolders: {
+          ...state.userFolders,
+          [state.currentFolder]: {
+            ...state.userFolders[state.currentFolder],
+            [action.payload.newName]:
+              state.userFolders[state.currentFolder][action.payload.currentName]
+          }
+        },
+        pdfLinks: {
+          ...pdfLinks,
+          [state.currentFolder]: {
+            ...state.pdfLinks[state.currentFolder],
+            [action.payload.newName]:
+              state.pdfLinks[state.currentFolder][action.payload.currentName]
+          }
+        },
+        currentFile: action.payload.newName
+      };
+
+      delete newState.userFolders[state.currentFolder][
+        action.payload.currentName
+      ];
+      delete newState.pdfLinks[state.currentFolder][action.payload.currentName];
+
+      return newState;
+
     default:
       return state;
   }

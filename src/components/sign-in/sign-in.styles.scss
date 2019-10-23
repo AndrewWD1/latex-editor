@@ -5,7 +5,7 @@
   border-radius: 4px;
   margin: 10px;
   width: 340px;
-  padding: 10px 40px 25px 40px;
+  padding: 20px 40px 30px 40px;
   -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
@@ -45,12 +45,15 @@
       margin: 15px 10px 5px 10px;
       padding: 10px 20px;
       border-radius: 4px;
-      background-color: rgb(158, 158, 158);
-      border: none;
+      background-color: #314352;
+      border: 2px solid rgb(158, 158, 158);
+      color: rgb(158, 158, 158);
       cursor: pointer;
 
       &:hover {
-        background-color: rgb(126, 126, 126);
+        background-color: rgb(158, 158, 158);
+        border: 2px solid rgb(158, 158, 158);
+        color: #314352;
       }
     }
   }
@@ -59,10 +62,10 @@
 .skip-sign-in-button {
   font-size: 1.3rem;
   text-align: center;
-  background-color: #181818;
+  background-color: #131313;
   color: rgb(192, 192, 192);
   border-radius: 4px;
-  margin: 10px;
+  margin: 20px;
   width: 270px;
   padding: 10px 40px 25px 40px;
   padding: 10px;
@@ -74,6 +77,6 @@
   box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
 
   &:hover {
-    background-color: #111111;
+    background-color: #0a0a0a;
   }
 }

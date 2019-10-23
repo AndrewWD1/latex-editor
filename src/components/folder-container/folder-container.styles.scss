@@ -7,6 +7,12 @@
   padding: 10px;
   color: #c4b7b7;
 
+  .folder-container-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   .arrow-span {
     margin: 0;
     display: flex;

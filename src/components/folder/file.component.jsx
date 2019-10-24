@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {
   switchCurrentFile,
   changeFileName
-} from "../../redux/files/files.actions";
+} from "../../redux/user/user.actions";
 
 import { ReactComponent as TexFile } from "../icons/tex-file.svg";
 import { ReactComponent as JSFile } from "../icons/js-file.svg";
@@ -39,7 +39,7 @@ const File = ({
     <div key={file} className="file">
       <div
         className="file-title"
-        onClick={() => switchCurrentFile(folderName, file)}
+        onClick={() => switchCurrentFile(file)}
         onDoubleClick={() => {
           setFileChangingNameInput(file);
           setFileChangingName(file);
@@ -51,7 +51,9 @@ const File = ({
           }
         }}
       >
-        <FileSelector fileType={file.slice(file.lastIndexOf("."))} />
+        <FileSelector
+          fileType={file.title.slice(file.title.lastIndexOf("."))}
+        />
         {fileChangingName === file ? (
           <input
             style={{
@@ -64,20 +66,19 @@ const File = ({
             onChange={e => setFileChangingNameInput(e.target.value)}
           />
         ) : (
-          file
+          file.title
         )}
       </div>
     </div>
   );
 };
-const mapDispathcToProps = dispatch => ({
-  switchCurrentFile: (folder, file) =>
-    dispatch(switchCurrentFile(folder, file)),
+const mapDispatchToProps = dispatch => ({
+  switchCurrentFile: file => dispatch(switchCurrentFile(file)),
   changeFileName: (currentName, newName) =>
     dispatch(changeFileName(currentName, newName))
 });
 
 export default connect(
   null,
-  mapDispathcToProps
+  mapDispatchToProps
 )(File);

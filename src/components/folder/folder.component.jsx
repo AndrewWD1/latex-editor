@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { selectFileById } from "../../redux/user/user.selectors";
+
 import AddFoldersFiles from "./add-folders-files.component";
 import { ReactComponent as ClosedFolderIcon } from "../icons/closed-folder.svg";
 import { ReactComponent as OpenFolderIcon } from "../icons/open-folder.svg";
@@ -8,7 +10,7 @@ import File from "./file.component";
 
 import "./folder.styles.scss";
 
-const Folder = ({ folderName, folderFiles }) => {
+const Folder = ({ folderName, folderFiles, selectFileById }) => {
   const [fileToggle, setFileToggle] = useState(false);
   const [fileChangingName, setFileChangingName] = useState(false);
   const [fileChangingNameInput, setFileChangingNameInput] = useState("");
@@ -26,10 +28,10 @@ const Folder = ({ folderName, folderFiles }) => {
         <AddFoldersFiles folderName={folderName} />
       </div>
       {fileToggle
-        ? Object.keys(folderFiles).map(file => (
+        ? Object.values(folderFiles).map(id => (
             <File
-              key={folderName + file}
-              file={file}
+              key={id}
+              file={selectFileById(id)}
               folderName={folderName}
               fileChangingName={fileChangingName}
               setFileChangingName={setFileChangingName}
@@ -42,4 +44,8 @@ const Folder = ({ folderName, folderFiles }) => {
   );
 };
 
-export default connect(null)(Folder);
+const mapStateToProps = state => ({
+  selectFileById: id => selectFileById(id)(state)
+});
+
+export default connect(mapStateToProps)(Folder);

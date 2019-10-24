@@ -1,7 +1,7 @@
 import React from "react";
 import MonacoEditor from "react-monaco-editor";
 import { connect } from "react-redux";
-import { updateText } from "../../redux/files/files.actions";
+import { updateText } from "../../redux/user/user.actions";
 import { selectDynamicWidth } from "../../redux/screen/screen.selectors";
 
 class Editor extends React.Component {
@@ -52,7 +52,7 @@ class Editor extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  code: state.folders.code,
+  code: state.user.code,
   editorOptions: state.editorOptions,
   height: state.screen.windowHeight,
   editorViewerToggle: state.screen.editorViewerToggle,

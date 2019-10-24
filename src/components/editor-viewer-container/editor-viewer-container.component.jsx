@@ -42,8 +42,8 @@ const mapStateToProps = state => ({
   height: state.screen.windowHeight,
   editorViewerToggle: state.screen.editorViewerToggle,
   dropdownMenuClicked: state.dropdownMenu.dropdownMenuClicked,
-  folder: state.folders.currentFolder,
-  file: state.folders.currentFile
+  folder: state.user.currentFolder,
+  file: state.user.currentFile
 });
 
 const mapDipsatchToProps = dispatch => ({

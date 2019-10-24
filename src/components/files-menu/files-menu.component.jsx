@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { toggleFolders } from "../../redux/screen/screen.actions";
-import { saveTextToFile } from "../../redux/files/files.actions";
+import { saveTextToFile } from "../../redux/user/user.actions";
 import "./files-menu.styles.scss";
 
 const FilesMenu = ({ toggleFolders, saveTextToFile }) => {

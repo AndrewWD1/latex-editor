@@ -15,11 +15,11 @@ const FolderContainer = ({ userFolders, toggleFolders, foldersToggle }) => {
           Folders
           <AddFolder style={{ cursor: "pointer" }} />
         </div>
-        {Object.keys(userFolders).map(folder => (
+        {Object.values(userFolders).map(folder => (
           <Folder
-            key={folder}
-            folderName={folder}
-            folderFiles={userFolders[folder]}
+            key={folder.id}
+            folderName={folder.title}
+            folderFiles={folder.files}
           />
         ))}
       </div>
@@ -33,7 +33,7 @@ const FolderContainer = ({ userFolders, toggleFolders, foldersToggle }) => {
 };
 
 const mapStateToProps = state => ({
-  userFolders: state.folders.userFolders,
+  userFolders: state.user.Folders,
   foldersToggle: state.screen.foldersToggle
 });
 

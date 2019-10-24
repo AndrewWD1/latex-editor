@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { selectPDFLink } from "../../redux/files/files.selectors";
 import { selectDynamicWidth } from "../../redux/screen/screen.selectors";
 
 const Viewer = ({
@@ -26,7 +25,7 @@ const Viewer = ({
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  pdfLink: selectPDFLink(ownProps.folder, ownProps.file)(state),
+  pdfLink: state.user.currentFile.pdfLink,
   dynamicWidth: selectDynamicWidth(state),
   height: state.screen.windowHeight,
   editorViewerToggle: state.screen.editorViewerToggle,

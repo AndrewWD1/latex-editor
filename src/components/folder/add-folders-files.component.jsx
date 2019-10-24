@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { ReactComponent as AddFolder } from "../icons/add-folder.svg";
-import { addFile } from "../../redux/files/files.actions";
+import { addFile } from "../../redux/user/user.actions";
 
 const AddFolderFiles = ({ addFile, folderName }) => (
   <div

@@ -42,5 +42,19 @@ export const TEST_USER = {
       text: "",
       pdfLink: "https://andrewwd1.github.io/Doumont_Resume.pdf"
     }
-  ]
+  ],
+  currentFolder: {
+    id: "Folder1",
+    title: "Folder1",
+    files: ["Folder1/File1.js", "Folder1/File2.tex"]
+  },
+  currentFile: {
+    id: "Folder1/File1.js",
+    title: "File1.js",
+    text:
+      '/**\r\n * Currently still working on linking back end that will compile latex to pdf\r\n * This code sample is just displaying Javascript to showcase the editor\r\n * The Pdf is just called from an external source\r\n * Click on Files -> Folders to see other examples\r\n */\r\n\r\nimport React from "react";\r\nimport { connect } from "react-redux";\r\nimport { toggleFolders } from "../../redux/screen/screen.actions";\r\nimport { saveTextToFile } from "../../redux/files/files.actions";\r\nimport "./files-menu.styles.scss";\r\n\r\nconst FilesMenu = ({ toggleFolders, saveTextToFile }) => {\r\n  const initialOptions = {\r\n    Save: saveTextToFile,\r\n    Folders: toggleFolders,\r\n    Profile: () => {},\r\n    "Other Options": () => {}\r\n  };\r\n\r\n  return (\r\n    <div className="files-menu">\r\n      <div className="files-items">\r\n        {Object.keys(initialOptions).map(item => (\r\n          <div key={item} className="files-item" onClick={initialOptions[item]}>\r\n            {item}\r\n          </div>\r\n        ))}\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nconst mapDispatchToProps = dispatch => ({\r\n  toggleFolders: () => dispatch(toggleFolders()),\r\n  saveTextToFile: () => dispatch(saveTextToFile())\r\n});\r\n\r\nexport default connect(\r\n  null,\r\n  mapDispatchToProps\r\n)(FilesMenu);',
+    pdfLink: "https://andrewwd1.github.io/Doumont_Resume.pdf"
+  },
+  code:
+    '/**\r\n * Currently still working on linking back end that will compile latex to pdf\r\n * This code sample is just displaying Javascript to showcase the editor\r\n * The Pdf is just called from an external source\r\n * Click on Files -> Folders to see other examples\r\n */\r\n\r\nimport React from "react";\r\nimport { connect } from "react-redux";\r\nimport { toggleFolders } from "../../redux/screen/screen.actions";\r\nimport { saveTextToFile } from "../../redux/files/files.actions";\r\nimport "./files-menu.styles.scss";\r\n\r\nconst FilesMenu = ({ toggleFolders, saveTextToFile }) => {\r\n  const initialOptions = {\r\n    Save: saveTextToFile,\r\n    Folders: toggleFolders,\r\n    Profile: () => {},\r\n    "Other Options": () => {}\r\n  };\r\n\r\n  return (\r\n    <div className="files-menu">\r\n      <div className="files-items">\r\n        {Object.keys(initialOptions).map(item => (\r\n          <div key={item} className="files-item" onClick={initialOptions[item]}>\r\n            {item}\r\n          </div>\r\n        ))}\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nconst mapDispatchToProps = dispatch => ({\r\n  toggleFolders: () => dispatch(toggleFolders()),\r\n  saveTextToFile: () => dispatch(saveTextToFile())\r\n});\r\n\r\nexport default connect(\r\n  null,\r\n  mapDispatchToProps\r\n)(FilesMenu);'
 };

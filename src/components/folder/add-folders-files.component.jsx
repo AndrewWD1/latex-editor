@@ -1,29 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
-import { ReactComponent as AddFolder } from "../icons/add-folder.svg";
+// import { ReactComponent as AddFolder } from "../icons/add-folder.svg";
 import { addFile } from "../../redux/user/user.actions";
 
-const AddFolderFiles = ({ addFile, folderName }) => (
-  <div
-    style={{
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-around",
-      alignItems: "baseline",
-      width: "40px"
-    }}
-  >
-    <div
-      style={{ color: "black", cursor: "pointer" }}
-      onClick={() => addFile(folderName)}
-    >
-      &#10010;
-    </div>
-    <AddFolder style={{ cursor: "pointer" }} />
-  </div>
-);
+// const AddFolderFiles = ({ addFile, folderName }) => (
+//   <div
+//     style={{
+//       display: "flex",
+//       flexDirection: "row",
+//       justifyContent: "space-around",
+//       alignItems: "baseline",
+//       width: "40px"
+//     }}
+//   >
+//     <div
+//       style={{ color: "black", cursor: "pointer" }}
+//       onClick={() => addFile(folderName)}
+//     >
+//       &#10010;
+//     </div>
+//     <AddFolder style={{ cursor: "pointer" }} />
+//   </div>
+// );
 
-const AddFiles = ({ addFile, folderName }) => (
+const AddFiles = ({ addFile, folderID }) => (
   <div
     style={{
       display: "flex",
@@ -35,7 +35,7 @@ const AddFiles = ({ addFile, folderName }) => (
   >
     <div
       style={{ color: "black", cursor: "pointer" }}
-      onClick={() => addFile(folderName)}
+      onClick={() => addFile(folderID)}
     >
       &#10010;
     </div>

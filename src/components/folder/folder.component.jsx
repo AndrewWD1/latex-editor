@@ -10,7 +10,7 @@ import File from "./file.component";
 
 import "./folder.styles.scss";
 
-const Folder = ({ folderName, folderFiles, selectFileById }) => {
+const Folder = ({ folderName, folderID, folderFiles, selectFileById }) => {
   const [fileToggle, setFileToggle] = useState(false);
   const [fileChangingName, setFileChangingName] = useState(false);
   const [fileChangingNameInput, setFileChangingNameInput] = useState("");
@@ -25,7 +25,7 @@ const Folder = ({ folderName, folderFiles, selectFileById }) => {
           {fileToggle ? <OpenFolderIcon /> : <ClosedFolderIcon />}
           <div className="folder-title">{folderName}</div>
         </div>
-        <AddFiles folderName={folderName} />
+        <AddFiles folderID={folderID} />
       </div>
       {fileToggle
         ? Object.values(folderFiles).map(id => (

@@ -27,10 +27,10 @@ export const addFolder = () => ({
   type: userActionTypes.ADD_FOLDER
 });
 
-export const addFile = folder => ({
+export const addFile = folderID => ({
   type: userActionTypes.ADD_FILE,
   payload: {
-    folder
+    folderID
   }
 });
 

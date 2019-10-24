@@ -79,7 +79,7 @@ export const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         Folders: R.adjust(
-          R.findIndex(R.propEq("id", action.payload.folder), state.Folders),
+          R.findIndex(R.propEq("id", action.payload.folderID), state.Folders),
           f => {
             return {
               ...f,
@@ -91,7 +91,7 @@ export const userReducer = (state = INITIAL_STATE, action) => {
         Files: [
           ...state.Files,
           {
-            id: `${len}${action.payload.folder}/NewFile.tex`,
+            id: `${len}${action.payload.folderID}/NewFile.tex`,
             title: `NewFile.tex`,
             text: "",
             pdfLink: "https://andrewwd1.github.io/Doumont_Resume.pdf"
@@ -107,6 +107,20 @@ export const userReducer = (state = INITIAL_STATE, action) => {
           file => ({ ...file, title: action.payload.newName }),
           state.Files
         )
+      };
+
+    case userActionTypes.ADD_FOLDER:
+      const folderLen = state.Folders.length;
+      return {
+        ...state,
+        Folders: [
+          ...state.Folders,
+          {
+            id: `${folderLen}Folder1`,
+            title: "NewFolder",
+            files: []
+          }
+        ]
       };
     default:
       return state;

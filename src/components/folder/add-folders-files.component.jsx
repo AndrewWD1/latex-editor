@@ -23,6 +23,25 @@ const AddFolderFiles = ({ addFile, folderName }) => (
   </div>
 );
 
+const AddFiles = ({ addFile, folderName }) => (
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-around",
+      alignItems: "baseline",
+      width: "40px"
+    }}
+  >
+    <div
+      style={{ color: "black", cursor: "pointer" }}
+      onClick={() => addFile(folderName)}
+    >
+      &#10010;
+    </div>
+  </div>
+);
+
 const mapDispatchToProps = dispatch => ({
   addFile: folder => dispatch(addFile(folder))
 });
@@ -30,4 +49,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   null,
   mapDispatchToProps
-)(AddFolderFiles);
+)(AddFiles);

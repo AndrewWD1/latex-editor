@@ -41,12 +41,12 @@ const File = ({
         className="file-title"
         onClick={() => switchCurrentFile(file)}
         onDoubleClick={() => {
-          setFileChangingNameInput(file);
+          setFileChangingNameInput(file.title);
           setFileChangingName(file);
         }}
         onKeyPress={e => {
           if (e.key === "Enter") {
-            changeFileName(file, fileChangingNameInput);
+            changeFileName(file.id, fileChangingNameInput);
             setFileChangingName(false);
           }
         }}
@@ -74,8 +74,7 @@ const File = ({
 };
 const mapDispatchToProps = dispatch => ({
   switchCurrentFile: file => dispatch(switchCurrentFile(file)),
-  changeFileName: (currentName, newName) =>
-    dispatch(changeFileName(currentName, newName))
+  changeFileName: (id, newName) => dispatch(changeFileName(id, newName))
 });
 
 export default connect(

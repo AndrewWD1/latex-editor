@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { selectFileById } from "../../redux/user/user.selectors";
 
-import AddFoldersFiles from "./add-folders-files.component";
+import AddFiles from "./add-folders-files.component";
 import { ReactComponent as ClosedFolderIcon } from "../icons/closed-folder.svg";
 import { ReactComponent as OpenFolderIcon } from "../icons/open-folder.svg";
 
@@ -25,7 +25,7 @@ const Folder = ({ folderName, folderFiles, selectFileById }) => {
           {fileToggle ? <OpenFolderIcon /> : <ClosedFolderIcon />}
           <div className="folder-title">{folderName}</div>
         </div>
-        <AddFoldersFiles folderName={folderName} />
+        <AddFiles folderName={folderName} />
       </div>
       {fileToggle
         ? Object.values(folderFiles).map(id => (

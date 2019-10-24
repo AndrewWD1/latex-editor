@@ -29,13 +29,15 @@ export const addFolder = () => ({
 
 export const addFile = folder => ({
   type: userActionTypes.ADD_FILE,
-  payload: folder
+  payload: {
+    folder
+  }
 });
 
-export const changeFileName = (currentName, newName) => ({
+export const changeFileName = (id, newName) => ({
   type: userActionTypes.CHANGE_FILE_NAME,
   payload: {
-    currentName,
+    id,
     newName
   }
 });

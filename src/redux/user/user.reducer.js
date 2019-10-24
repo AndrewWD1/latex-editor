@@ -75,53 +75,39 @@ export const userReducer = (state = INITIAL_STATE, action) => {
       };
 
     case userActionTypes.ADD_FILE:
-      console.log(action.payload);
+      const len = state.Files.length;
       return {
         ...state,
-        userFolders: {
-          ...state.userFolders,
-          [action.payload]: {
-            ...state.userFolders[action.payload],
-            "new file": ""
+        Folders: R.adjust(
+          R.findIndex(R.propEq("id", action.payload.folder), state.Folders),
+          f => {
+            return {
+              ...f,
+              files: [...f.files, `${len}${f.id}/NewFile.tex`]
+            };
+          },
+          state.Folders
+        ),
+        Files: [
+          ...state.Files,
+          {
+            id: `${len}${action.payload.folder}/NewFile.tex`,
+            title: `NewFile.tex`,
+            text: "",
+            pdfLink: "https://andrewwd1.github.io/Doumont_Resume.pdf"
           }
-        },
-        pdfLinks: {
-          ...state.pdfLinks,
-          [action.payload]: {
-            ...state.pdfLinks[action.payload],
-            "new file": "https://andrewwd1.github.io/Doumont_Resume.pdf"
-          }
-        }
+        ]
       };
 
-    // case userActionTypes.CHANGE_FILE_NAME:
-    //   const newState = {
-    //     ...state,
-    //     userFolders: {
-    //       ...state.userFolders,
-    //       [state.currentFolder]: {
-    //         ...state.userFolders[state.currentFolder],
-    //         [action.payload.newName]:
-    //           state.userFolders[state.currentFolder][action.payload.currentName]
-    //       }
-    //     },
-    //     pdfLinks: {
-    //       ...pdfLinks,
-    //       [state.currentFolder]: {
-    //         ...state.pdfLinks[state.currentFolder],
-    //         [action.payload.newName]:
-    //           state.pdfLinks[state.currentFolder][action.payload.currentName]
-    //       }
-    //     },
-    //     currentFile: action.payload.newName
-    //   };
-
-    //   delete newState.userFolders[state.currentFolder][
-    //     action.payload.currentName
-    //   ];
-    //   delete newState.pdfLinks[state.currentFolder][action.payload.currentName];
-
-    //   return newState;
+    case userActionTypes.CHANGE_FILE_NAME:
+      return {
+        ...state,
+        Files: R.adjust(
+          R.findIndex(R.propEq("id", action.payload.id), state.Files),
+          file => ({ ...file, title: action.payload.newName }),
+          state.Files
+        )
+      };
     default:
       return state;
   }

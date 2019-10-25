@@ -49,3 +49,31 @@ export const changeFolderName = (folderID, newName) => ({
     newName
   }
 });
+
+export const setFolderChangingName = folderID => ({
+  type: userActionTypes.SET_FOLDER_CHANGING_NAME,
+  payload: {
+    folderID
+  }
+});
+
+export const setFolderChangingNameInput = input => ({
+  type: userActionTypes.SET_FOLDER_CHANGING_NAME_INPUT,
+  payload: {
+    input
+  }
+});
+
+export const setFileChangingName = file => ({
+  type: userActionTypes.SET_FILE_CHANGING_NAME,
+  payload: {
+    file
+  }
+});
+
+export const setFileChangingNameInput = input => ({
+  type: userActionTypes.SET_FILE_CHANGING_NAME_INPUT,
+  payload: {
+    input
+  }
+});

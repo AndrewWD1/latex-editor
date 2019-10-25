@@ -23,7 +23,7 @@ const INITIAL_STATE = {
     },
     {
       id: "Folder1/File2.tex",
-      title: "File1.js",
+      title: "File2.tex",
       text: "",
       pdfLink: "https://andrewwd1.github.io/Doumont_Resume.pdf"
     }
@@ -34,7 +34,11 @@ const INITIAL_STATE = {
     text: "",
     pdfLink: "https://andrewwd1.github.io/Doumont_Resume.pdf"
   },
-  code: ""
+  code: "",
+  folderChangingName: false,
+  folderChangingNameInput: "",
+  fileChangingName: false,
+  fileChangingNameInput: ""
 };
 
 export const userReducer = (state = INITIAL_STATE, action) => {
@@ -132,6 +136,31 @@ export const userReducer = (state = INITIAL_STATE, action) => {
           }
         ]
       };
+
+    case userActionTypes.SET_FOLDER_CHANGING_NAME:
+      return {
+        ...state,
+        folderChangingName: action.payload.folderID
+      };
+
+    case userActionTypes.SET_FOLDER_CHANGING_NAME_INPUT:
+      return {
+        ...state,
+        folderChangingNameInput: action.payload.input
+      };
+
+    case userActionTypes.SET_FILE_CHANGING_NAME:
+      return {
+        ...state,
+        fileChangingName: action.payload.file
+      };
+
+    case userActionTypes.SET_FILE_CHANGING_NAME_INPUT:
+      return {
+        ...state,
+        fileChangingNameInput: action.payload.input
+      };
+
     default:
       return state;
   }

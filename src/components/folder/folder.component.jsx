@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { changeFolderName } from "../../redux/user/user.actions";
+import {
+  changeFolderName,
+  setFolderChangingName,
+  setFolderChangingNameInput
+} from "../../redux/user/user.actions";
 import { selectFileById } from "../../redux/user/user.selectors";
 
 import AddFiles from "./add-folders-files.component";
@@ -23,8 +27,6 @@ const Folder = ({
   changeFolderName
 }) => {
   const [fileToggle, setFileToggle] = useState(false);
-  const [fileChangingName, setFileChangingName] = useState(false);
-  const [fileChangingNameInput, setFileChangingNameInput] = useState("");
 
   return (
     <div className="folder">
@@ -49,12 +51,7 @@ const Folder = ({
           >
             {folderChangingName === folderID ? (
               <input
-                style={{
-                  width: "100px",
-                  borderRadius: "2px",
-                  border: "none",
-                  backgroundColor: "#c4b7b7"
-                }}
+                className="folder-file-input"
                 value={folderChangingNameInput}
                 onChange={e => setFolderChangingNameInput(e.target.value)}
               />
@@ -67,15 +64,7 @@ const Folder = ({
       </div>
       {fileToggle
         ? Object.values(folderFiles).map(id => (
-            <File
-              key={id}
-              file={selectFileById(id)}
-              folderName={folderName}
-              fileChangingName={fileChangingName}
-              setFileChangingName={setFileChangingName}
-              fileChangingNameInput={fileChangingNameInput}
-              setFileChangingNameInput={setFileChangingNameInput}
-            />
+            <File key={id} file={selectFileById(id)} folderName={folderName} />
           ))
         : null}
     </div>
@@ -83,12 +72,17 @@ const Folder = ({
 };
 
 const mapStateToProps = state => ({
-  selectFileById: id => selectFileById(id)(state)
+  selectFileById: id => selectFileById(id)(state),
+  folderChangingName: state.user.folderChangingName,
+  folderChangingNameInput: state.user.folderChangingNameInput
 });
 
 const mapDispatchToProps = dispatch => ({
   changeFolderName: (folderID, newName) =>
-    dispatch(changeFolderName(folderID, newName))
+    dispatch(changeFolderName(folderID, newName)),
+  setFolderChangingName: folderID => dispatch(setFolderChangingName(folderID)),
+  setFolderChangingNameInput: input =>
+    dispatch(setFolderChangingNameInput(input))
 });
 
 export default connect(

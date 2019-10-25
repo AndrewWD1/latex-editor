@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { toggleFolders } from "../../redux/screen/screen.actions";
 import { addFolder } from "../../redux/user/user.actions";
@@ -13,8 +13,6 @@ const FolderContainer = ({
   foldersToggle,
   addFolder
 }) => {
-  const [folderChangingName, setFolderChangingName] = useState(false);
-  const [folderChangingNameInput, setFolderChangingNameInput] = useState("");
   if (!foldersToggle) return null;
 
   return (
@@ -30,10 +28,6 @@ const FolderContainer = ({
             folderName={folder.title}
             folderID={folder.id}
             folderFiles={folder.files}
-            folderChangingName={folderChangingName}
-            setFolderChangingName={setFolderChangingName}
-            folderChangingNameInput={folderChangingNameInput}
-            setFolderChangingNameInput={setFolderChangingNameInput}
           />
         ))}
       </div>

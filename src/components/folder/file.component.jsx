@@ -2,7 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import {
   switchCurrentFile,
-  changeFileName
+  changeFileName,
+  setFileChangingName,
+  setFileChangingNameInput
 } from "../../redux/user/user.actions";
 
 import { ReactComponent as TexFile } from "../icons/tex-file.svg";
@@ -55,12 +57,7 @@ const File = ({
         />
         {fileChangingName === file ? (
           <input
-            style={{
-              width: "100px",
-              borderRadius: "2px",
-              border: "none",
-              backgroundColor: "#c4b7b7"
-            }}
+            className="folder-file-input"
             value={fileChangingNameInput}
             onChange={e => setFileChangingNameInput(e.target.value)}
           />
@@ -71,12 +68,20 @@ const File = ({
     </div>
   );
 };
+
+const mapStateToProps = state => ({
+  fileChangingName: state.user.fileChangingName,
+  fileChangingNameInput: state.user.fileChangingNameInput
+});
+
 const mapDispatchToProps = dispatch => ({
   switchCurrentFile: file => dispatch(switchCurrentFile(file)),
-  changeFileName: (id, newName) => dispatch(changeFileName(id, newName))
+  changeFileName: (id, newName) => dispatch(changeFileName(id, newName)),
+  setFileChangingName: file => dispatch(setFileChangingName(file)),
+  setFileChangingNameInput: input => dispatch(setFileChangingNameInput(input))
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(File);

@@ -109,6 +109,16 @@ export const userReducer = (state = INITIAL_STATE, action) => {
         )
       };
 
+    case userActionTypes.CHANGE_FOLDER_NAME:
+      return {
+        ...state,
+        Folders: R.adjust(
+          R.findIndex(R.propEq("id", action.payload.folderID), state.Folders),
+          folder => ({ ...folder, title: action.payload.newName }),
+          state.Folders
+        )
+      };
+
     case userActionTypes.ADD_FOLDER:
       const folderLen = state.Folders.length;
       return {

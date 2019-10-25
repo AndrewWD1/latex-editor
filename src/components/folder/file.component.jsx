@@ -27,7 +27,6 @@ const FileSelector = ({ fileType }) => {
 
 const File = ({
   file,
-  folderName,
   switchCurrentFile,
   fileChangingName,
   setFileChangingName,

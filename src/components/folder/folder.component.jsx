@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { changeFolderName } from "../../redux/user/user.actions";
 import { selectFileById } from "../../redux/user/user.selectors";
 
 import AddFiles from "./add-folders-files.component";
@@ -18,7 +19,8 @@ const Folder = ({
   folderChangingName,
   setFolderChangingName,
   folderChangingNameInput,
-  setFolderChangingNameInput
+  setFolderChangingNameInput,
+  changeFolderName
 }) => {
   const [fileToggle, setFileToggle] = useState(false);
   const [fileChangingName, setFileChangingName] = useState(false);
@@ -40,6 +42,7 @@ const Folder = ({
             }}
             onKeyPress={e => {
               if (e.key === "Enter") {
+                changeFolderName(folderID, folderChangingNameInput);
                 setFolderChangingName(false);
               }
             }}
@@ -83,4 +86,12 @@ const mapStateToProps = state => ({
   selectFileById: id => selectFileById(id)(state)
 });
 
-export default connect(mapStateToProps)(Folder);
+const mapDispatchToProps = dispatch => ({
+  changeFolderName: (folderID, newName) =>
+    dispatch(changeFolderName(folderID, newName))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Folder);

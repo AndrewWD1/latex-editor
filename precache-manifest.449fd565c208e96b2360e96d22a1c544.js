@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/latex-editor/editor.worker.js"
   },
   {
-    "revision": "c2d935a96aafc52869c705344addf8bb",
+    "revision": "2a8e34996e484962893e7aa70b6fddb7",
     "url": "/latex-editor/index.html"
   },
   {
@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/latex-editor/static/css/2.eed88baf.chunk.css"
   },
   {
-    "revision": "f365ea0b9682bd875cd9",
+    "revision": "4cfeb577ab693f8b6cb3",
     "url": "/latex-editor/static/css/main.3d170815.chunk.css"
   },
   {
@@ -28,8 +28,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/latex-editor/static/js/4.69d576ea.chunk.js"
   },
   {
-    "revision": "f365ea0b9682bd875cd9",
-    "url": "/latex-editor/static/js/main.ca942929.chunk.js"
+    "revision": "4cfeb577ab693f8b6cb3",
+    "url": "/latex-editor/static/js/main.0efd4e94.chunk.js"
   },
   {
     "revision": "fe125249743099a63df7",

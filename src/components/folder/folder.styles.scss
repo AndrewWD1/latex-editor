@@ -61,3 +61,16 @@
     background-color: #c4b7b7;
   }
 }
+
+.add-files {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: baseline;
+  width: 40px;
+}
+
+.add-files-button {
+  color: black;
+  cursor: pointer;
+}

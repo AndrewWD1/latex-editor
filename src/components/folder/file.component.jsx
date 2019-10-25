@@ -36,33 +36,32 @@ const File = ({
   setFileChangingNameInput,
   changeFileName
 }) => {
+  const { title, id } = file;
   return (
-    <div key={file} className="file">
+    <div className="file">
       <div
         className="file-title"
         onClick={() => switchCurrentFile(file)}
         onDoubleClick={() => {
-          setFileChangingNameInput(file.title);
-          setFileChangingName(file);
+          setFileChangingNameInput(title);
+          setFileChangingName(id);
         }}
         onKeyPress={e => {
           if (e.key === "Enter") {
-            changeFileName(file.id, fileChangingNameInput);
+            changeFileName(id, fileChangingNameInput);
             setFileChangingName(false);
           }
         }}
       >
-        <FileSelector
-          fileType={file.title.slice(file.title.lastIndexOf("."))}
-        />
-        {fileChangingName === file ? (
+        <FileSelector fileType={title.slice(title.lastIndexOf("."))} />
+        {fileChangingName === id ? (
           <input
             className="folder-file-input"
             value={fileChangingNameInput}
             onChange={e => setFileChangingNameInput(e.target.value)}
           />
         ) : (
-          file.title
+          title
         )}
       </div>
     </div>

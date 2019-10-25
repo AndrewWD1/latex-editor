@@ -14,7 +14,6 @@ const FolderContainer = ({
   addFolder
 }) => {
   if (!foldersToggle) return null;
-
   return (
     <div className="folder-container">
       <div>
@@ -23,12 +22,7 @@ const FolderContainer = ({
           <AddFolder style={{ cursor: "pointer" }} onClick={addFolder} />
         </div>
         {Object.values(userFolders).map(folder => (
-          <Folder
-            key={folder.id}
-            folderName={folder.title}
-            folderID={folder.id}
-            folderFiles={folder.files}
-          />
+          <Folder key={folder.id} folder={folder} />
         ))}
       </div>
       <span className="arrow-span">

@@ -7,7 +7,7 @@ import {
 } from "../../redux/user/user.actions";
 import { selectFileById } from "../../redux/user/user.selectors";
 
-import AddFiles from "./add-folders-files.component";
+import AddFiles from "./add-files.component";
 import { ReactComponent as ClosedFolderIcon } from "../icons/closed-folder.svg";
 import { ReactComponent as OpenFolderIcon } from "../icons/open-folder.svg";
 
@@ -16,9 +16,7 @@ import File from "./file.component";
 import "./folder.styles.scss";
 
 const Folder = ({
-  folderName,
-  folderID,
-  folderFiles,
+  folder,
   selectFileById,
   folderChangingName,
   setFolderChangingName,
@@ -27,6 +25,7 @@ const Folder = ({
   changeFolderName
 }) => {
   const [fileToggle, setFileToggle] = useState(false);
+  const { title, id, files } = folder;
 
   return (
     <div className="folder">
@@ -39,32 +38,32 @@ const Folder = ({
           <div
             className="folder-title"
             onDoubleClick={() => {
-              setFolderChangingNameInput(folderName);
-              setFolderChangingName(folderID);
+              setFolderChangingNameInput(title);
+              setFolderChangingName(id);
             }}
             onKeyPress={e => {
               if (e.key === "Enter") {
-                changeFolderName(folderID, folderChangingNameInput);
+                changeFolderName(id, folderChangingNameInput);
                 setFolderChangingName(false);
               }
             }}
           >
-            {folderChangingName === folderID ? (
+            {folderChangingName === id ? (
               <input
                 className="folder-file-input"
                 value={folderChangingNameInput}
                 onChange={e => setFolderChangingNameInput(e.target.value)}
               />
             ) : (
-              folderName
+              title
             )}
           </div>
         </div>
-        <AddFiles folderID={folderID} />
+        <AddFiles folderID={id} />
       </div>
       {fileToggle
-        ? Object.values(folderFiles).map(id => (
-            <File key={id} file={selectFileById(id)} folderName={folderName} />
+        ? Object.values(files).map(id => (
+            <File key={id} file={selectFileById(id)} title={title} />
           ))
         : null}
     </div>
@@ -78,9 +77,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  changeFolderName: (folderID, newName) =>
-    dispatch(changeFolderName(folderID, newName)),
-  setFolderChangingName: folderID => dispatch(setFolderChangingName(folderID)),
+  changeFolderName: (id, newName) => dispatch(changeFolderName(id, newName)),
+  setFolderChangingName: id => dispatch(setFolderChangingName(id)),
   setFolderChangingNameInput: input =>
     dispatch(setFolderChangingNameInput(input))
 });

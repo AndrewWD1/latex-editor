@@ -37,7 +37,7 @@ const Folder = ({
           <div
             className="folder-title"
             onDoubleClick={() => {
-              setFolderChangingNameInput(folderID);
+              setFolderChangingNameInput(folderName);
               setFolderChangingName(folderID);
             }}
             onKeyPress={e => {

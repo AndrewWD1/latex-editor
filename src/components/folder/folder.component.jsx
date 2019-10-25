@@ -10,7 +10,16 @@ import File from "./file.component";
 
 import "./folder.styles.scss";
 
-const Folder = ({ folderName, folderID, folderFiles, selectFileById }) => {
+const Folder = ({
+  folderName,
+  folderID,
+  folderFiles,
+  selectFileById,
+  folderChangingName,
+  setFolderChangingName,
+  folderChangingNameInput,
+  setFolderChangingNameInput
+}) => {
   const [fileToggle, setFileToggle] = useState(false);
   const [fileChangingName, setFileChangingName] = useState(false);
   const [fileChangingNameInput, setFileChangingNameInput] = useState("");
@@ -23,7 +32,33 @@ const Folder = ({ folderName, folderID, folderFiles, selectFileById }) => {
           onClick={() => setFileToggle(!fileToggle)}
         >
           {fileToggle ? <OpenFolderIcon /> : <ClosedFolderIcon />}
-          <div className="folder-title">{folderName}</div>
+          <div
+            className="folder-title"
+            onDoubleClick={() => {
+              setFolderChangingNameInput(folderID);
+              setFolderChangingName(folderID);
+            }}
+            onKeyPress={e => {
+              if (e.key === "Enter") {
+                setFolderChangingName(false);
+              }
+            }}
+          >
+            {folderChangingName === folderID ? (
+              <input
+                style={{
+                  width: "100px",
+                  borderRadius: "2px",
+                  border: "none",
+                  backgroundColor: "#c4b7b7"
+                }}
+                value={folderChangingNameInput}
+                onChange={e => setFolderChangingNameInput(e.target.value)}
+              />
+            ) : (
+              folderName
+            )}
+          </div>
         </div>
         <AddFiles folderID={folderID} />
       </div>

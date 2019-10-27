@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import { signIn } from "../../redux/user/user.actions";
+import { signInStart } from "../../redux/user/user.actions";
 
 import "./sign-in.styles.scss";
 
-const SignIn = ({ signIn }) => {
+const SignIn = ({ signInStart }) => {
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
@@ -22,11 +22,12 @@ const SignIn = ({ signIn }) => {
         className="input"
         onChange={e => setFirstName(e.target.value)}
       />
-      <label className="label">Last Name</label>
+      <label className="label">Email</label>
       <input
-        value={lastName}
+        value={email}
+        type={email}
         className="input"
-        onChange={e => setLastName(e.target.value)}
+        onChange={e => setEmail(e.target.value)}
       />
       <label className="label">Password</label>
       <input
@@ -36,10 +37,16 @@ const SignIn = ({ signIn }) => {
         onChange={e => setPassword(e.target.value)}
       />
       <div className="sign-ins">
-        <div className="sign-in-button" onClick={signIn}>
+        <div
+          className="sign-in-button"
+          onClick={() => signInStart(email, password)}
+        >
           Sign in
         </div>
-        <div className="sign-in-button" onClick={signIn}>
+        <div
+          className="sign-in-button"
+          onClick={() => signInStart(email, password)}
+        >
           Register
         </div>
       </div>
@@ -48,7 +55,7 @@ const SignIn = ({ signIn }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  signIn: () => dispatch(signIn())
+  signInStart: (email, password) => dispatch(signInStart(email, password))
 });
 
 export default connect(

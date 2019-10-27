@@ -1,10 +1,20 @@
 import { userActionTypes } from "./user.types";
 
-export const signIn = () => ({
-  type: userActionTypes.SIGN_IN
+export const setCurrentUser = user => ({
+  type: userActionTypes.SET_CURRENT_USER,
+  payload: user
 });
-export const signInDefault = () => ({
-  type: userActionTypes.SIGN_IN_DEFAULT
+
+export const signInStart = (email, password) => ({
+  type: userActionTypes.SIGN_IN_START,
+  payload: {
+    email,
+    password
+  }
+});
+
+export const signInDefaultStart = () => ({
+  type: userActionTypes.SIGN_IN_DEFAULT_START
 });
 
 export const updateText = code => ({

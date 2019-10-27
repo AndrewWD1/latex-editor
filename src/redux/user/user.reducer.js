@@ -1,6 +1,5 @@
 import * as R from "ramda";
 import { userActionTypes } from "./user.types";
-import { TEST_USER } from "./testUser";
 
 const INITIAL_STATE = {
   signedIn: false,
@@ -43,14 +42,9 @@ const INITIAL_STATE = {
 
 export const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case userActionTypes.SIGN_IN:
-      return {
-        ...state,
-        signedIn: true
-      };
+    case userActionTypes.SET_CURRENT_USER:
+      return action.payload;
 
-    case userActionTypes.SIGN_IN_DEFAULT:
-      return TEST_USER;
     case userActionTypes.CHANGE_TEXT:
       return {
         ...state,

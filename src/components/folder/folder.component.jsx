@@ -26,6 +26,17 @@ const Folder = ({
 }) => {
   const [fileToggle, setFileToggle] = useState(false);
   const { title, id, files } = folder;
+  const handleDoubleClick = () => {
+    setFolderChangingNameInput(title);
+    setFolderChangingName(id);
+  };
+  const handleKeyPress = e => {
+    if (e.key === "Enter") {
+      changeFolderName(id, folderChangingNameInput);
+      setFolderChangingName(false);
+    }
+  };
+  const handleChangeInput = e => setFolderChangingNameInput(e.target.value);
 
   return (
     <div className="folder">
@@ -37,22 +48,14 @@ const Folder = ({
           {fileToggle ? <OpenFolderIcon /> : <ClosedFolderIcon />}
           <div
             className="folder-title"
-            onDoubleClick={() => {
-              setFolderChangingNameInput(title);
-              setFolderChangingName(id);
-            }}
-            onKeyPress={e => {
-              if (e.key === "Enter") {
-                changeFolderName(id, folderChangingNameInput);
-                setFolderChangingName(false);
-              }
-            }}
+            onDoubleClick={handleDoubleClick}
+            onKeyPress={handleKeyPress}
           >
             {folderChangingName === id ? (
               <input
                 className="folder-file-input"
                 value={folderChangingNameInput}
-                onChange={e => setFolderChangingNameInput(e.target.value)}
+                onChange={handleChangeInput}
               />
             ) : (
               title
@@ -61,11 +64,10 @@ const Folder = ({
         </div>
         <AddFiles folderID={id} />
       </div>
-      {fileToggle
-        ? Object.values(files).map(id => (
-            <File key={id} file={selectFileById(id)} title={title} />
-          ))
-        : null}
+      {fileToggle &&
+        Object.values(files).map(id => (
+          <File key={id} file={selectFileById(id)} title={title} />
+        ))}
     </div>
   );
 };

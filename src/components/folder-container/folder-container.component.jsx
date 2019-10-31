@@ -22,7 +22,7 @@ const FolderContainer = ({
           <AddFolder style={{ cursor: "pointer" }} onClick={addFolder} />
         </div>
         {Object.values(userFolders).map(folder => (
-          <Folder key={folder.id} folder={folder} />
+          <Folder key={folder.ref} folder={folder} />
         ))}
       </div>
       <span className="arrow-span">

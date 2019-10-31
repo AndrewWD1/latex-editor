@@ -37,33 +37,33 @@ export const addFolder = () => ({
   type: userActionTypes.ADD_FOLDER
 });
 
-export const addFile = folderID => ({
+export const addFile = folderRef => ({
   type: userActionTypes.ADD_FILE,
   payload: {
-    folderID
+    folderRef
   }
 });
 
-export const changeFileName = (id, newName) => ({
+export const changeFileName = (ref, newName) => ({
   type: userActionTypes.CHANGE_FILE_NAME,
   payload: {
-    id,
+    ref,
     newName
   }
 });
 
-export const changeFolderName = (folderID, newName) => ({
+export const changeFolderName = (folderRef, newName) => ({
   type: userActionTypes.CHANGE_FOLDER_NAME,
   payload: {
-    folderID,
+    folderRef,
     newName
   }
 });
 
-export const setFolderChangingName = folderID => ({
+export const setFolderChangingName = folderRef => ({
   type: userActionTypes.SET_FOLDER_CHANGING_NAME,
   payload: {
-    folderID
+    folderRef
   }
 });
 

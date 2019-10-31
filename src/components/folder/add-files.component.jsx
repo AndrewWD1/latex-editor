@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { addFile } from "../../redux/user/user.actions";
 
-const AddFiles = ({ addFile, folderID }) => (
+const AddFiles = ({ addFile, folderRef }) => (
   <div className="add-files">
-    <div className="add-files-button" onClick={() => addFile(folderID)}>
+    <div className="add-files-button" onClick={() => addFile(folderRef)}>
       &#10010;
     </div>
   </div>

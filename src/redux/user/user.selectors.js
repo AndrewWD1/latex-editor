@@ -8,8 +8,8 @@ export const selectUserFiles = createSelector(
   user => user.Files
 );
 
-export const selectFileById = id =>
+export const selectFileByRef = ref =>
   createSelector(
     [selectUserFiles],
-    Files => R.find(R.propEq("id", id))(Files)
+    Files => R.find(R.propEq("ref", ref))(Files)
   );

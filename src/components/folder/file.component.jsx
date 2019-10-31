@@ -36,14 +36,14 @@ const File = ({
   setFileChangingNameInput,
   changeFileName
 }) => {
-  const { title, id } = file;
+  const { title, ref } = file;
   const handleDoubleClick = () => {
     setFileChangingNameInput(title);
-    setFileChangingName(id);
+    setFileChangingName(ref);
   };
   const handleKeyPress = e => {
     if (e.key === "Enter") {
-      changeFileName(id, fileChangingNameInput);
+      changeFileName(ref, fileChangingNameInput);
       setFileChangingName(false);
     }
   };
@@ -57,7 +57,7 @@ const File = ({
         onKeyPress={handleKeyPress}
       >
         <FileSelector fileType={title.slice(title.lastIndexOf("."))} />
-        {fileChangingName === id ? (
+        {fileChangingName === ref ? (
           <input
             className="folder-file-input"
             value={fileChangingNameInput}
@@ -78,7 +78,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   switchCurrentFile: file => dispatch(switchCurrentFile(file)),
-  changeFileName: (id, newName) => dispatch(changeFileName(id, newName)),
+  changeFileName: (ref, newName) => dispatch(changeFileName(ref, newName)),
   setFileChangingName: file => dispatch(setFileChangingName(file)),
   setFileChangingNameInput: input => dispatch(setFileChangingNameInput(input))
 });

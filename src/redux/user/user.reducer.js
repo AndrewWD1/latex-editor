@@ -1,4 +1,3 @@
-import * as R from "ramda";
 import { userActionTypes } from "./user.types";
 
 const INITIAL_STATE = {
@@ -59,30 +58,6 @@ export const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         currentFile: action.payload.file,
         code: action.payload.file.text
-      };
-
-    case userActionTypes.CHANGE_FOLDER_NAME:
-      return {
-        ...state,
-        Folders: R.adjust(
-          R.findIndex(R.propEq("ref", action.payload.folderRef), state.Folders),
-          folder => ({ ...folder, title: action.payload.newName }),
-          state.Folders
-        )
-      };
-
-    case userActionTypes.ADD_FOLDER:
-      const folderLen = state.Folders.length;
-      return {
-        ...state,
-        Folders: [
-          ...state.Folders,
-          {
-            ref: `${folderLen}Folder1`,
-            title: "NewFolder",
-            files: []
-          }
-        ]
       };
 
     case userActionTypes.SET_FOLDER_CHANGING_NAME:

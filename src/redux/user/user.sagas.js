@@ -9,7 +9,7 @@ export const getEmail = state => state.user.email;
 
 export function* fetchDefaultUser() {
   try {
-    let res = yield fetch("http://localhost:3000/testuser", {
+    let res = yield fetch("https://thelatexeditor.com/testuser", {
       method: "GET"
     });
     let user = yield res.json();
@@ -21,7 +21,7 @@ export function* fetchDefaultUser() {
 
 export function* fetchUser({ payload }) {
   try {
-    let res = yield fetch("http://localhost:3000/sign-in", {
+    let res = yield fetch("https://thelatexeditor.com/sign-in", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -44,7 +44,7 @@ export function* saveAndCompile() {
   };
   yield put(toggleEditorViewer("viewer"));
   try {
-    let res = yield fetch("http://localhost:3000/save-and-compile", {
+    let res = yield fetch("https://thelatexeditor.com/save-and-compile", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -59,14 +59,34 @@ export function* saveAndCompile() {
   }
 }
 
-export function* addFile({ folderRef }) {
+export function* addFile({ payload: { folderRef } }) {
   const email = yield select(getEmail);
   const payload = {
     email,
     folderRef
   };
   try {
-    let res = yield fetch("http://localhost:3000/add-file", {
+    let res = yield fetch("https://thelatexeditor.com/add-file", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+    let user = yield res.json();
+    yield put(setCurrentUser(user));
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export function* addFolder() {
+  const email = yield select(getEmail);
+  const payload = {
+    email
+  };
+  try {
+    let res = yield fetch("https://thelatexeditor.com/add-folder", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -89,7 +109,30 @@ export function* changeFileName({ payload: { ref, newName } }) {
   };
   console.log(payload);
   try {
-    let res = yield fetch("http://localhost:3000/change-file-name", {
+    let res = yield fetch("https://thelatexeditor.com/change-file-name", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+    let user = yield res.json();
+    yield put(setCurrentUser(user));
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export function* changeFolderName({ payload: { ref, newName } }) {
+  const email = yield select(getEmail);
+  const payload = {
+    email,
+    ref,
+    newName
+  };
+  console.log(payload);
+  try {
+    let res = yield fetch("https://thelatexeditor.com/change-folder-name", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -119,8 +162,16 @@ export function* onAddFile() {
   yield takeLatest(userActionTypes.ADD_FILE, addFile);
 }
 
+export function* onAddFolder() {
+  yield takeLatest(userActionTypes.ADD_FOLDER, addFolder);
+}
+
 export function* onChangeFileName() {
   yield takeLatest(userActionTypes.CHANGE_FILE_NAME, changeFileName);
+}
+
+export function* onChangeFolderName() {
+  yield takeLatest(userActionTypes.CHANGE_FOLDER_NAME, changeFolderName);
 }
 
 export function* userSagas() {
@@ -129,6 +180,8 @@ export function* userSagas() {
     call(onSignInStart),
     call(onSaveTextToFile),
     call(onAddFile),
-    call(onChangeFileName)
+    call(onChangeFileName),
+    call(onChangeFolderName),
+    call(onAddFolder)
   ]);
 }

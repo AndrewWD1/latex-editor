@@ -52,10 +52,10 @@ export const changeFileName = (ref, newName) => ({
   }
 });
 
-export const changeFolderName = (folderRef, newName) => ({
+export const changeFolderName = (ref, newName) => ({
   type: userActionTypes.CHANGE_FOLDER_NAME,
   payload: {
-    folderRef,
+    ref,
     newName
   }
 });

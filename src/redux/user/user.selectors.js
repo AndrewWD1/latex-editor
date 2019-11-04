@@ -1,5 +1,11 @@
 import { createSelector } from "reselect";
-import * as R from "ramda";
+
+const find = cb => arr => {
+  for (let i = 0; i < arr.length; i++) {
+    if (cb(arr[i])) return arr[i];
+  }
+  return undefined;
+};
 
 const selectUser = state => state.user;
 
@@ -11,5 +17,5 @@ export const selectUserFiles = createSelector(
 export const selectFileByRef = ref =>
   createSelector(
     [selectUserFiles],
-    Files => R.find(R.propEq("ref", ref))(Files)
+    Files => find(o => o.ref === ref)(Files)
   );

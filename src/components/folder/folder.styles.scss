@@ -27,6 +27,14 @@
     overflow: hidden;
   }
 
+  .folder-title-selected {
+    margin: 0 0.3rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: rgb(245, 240, 240);
+  }
+
   .file {
     width: 130px;
     font-size: 0.8rem;
@@ -42,6 +50,25 @@
       overflow: hidden;
       position: relative;
       z-index: 100;
+
+      svg {
+        margin-right: 0.3rem;
+      }
+
+      &:hover {
+        white-space: nowrap;
+        overflow: visible;
+      }
+    }
+
+    .file-title-selected {
+      width: auto;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      position: relative;
+      z-index: 100;
+      color: white;
 
       svg {
         margin-right: 0.3rem;

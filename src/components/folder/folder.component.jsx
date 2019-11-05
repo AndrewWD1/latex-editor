@@ -5,7 +5,10 @@ import {
   setFolderChangingName,
   setFolderChangingNameInput
 } from "../../redux/user/user.actions";
-import { selectFileByRef } from "../../redux/user/user.selectors";
+import {
+  selectFileByRef,
+  selectCurrentFolderRef
+} from "../../redux/user/user.selectors";
 
 import AddFiles from "./add-files.component";
 import { ReactComponent as ClosedFolderIcon } from "../icons/closed-folder.svg";
@@ -22,7 +25,8 @@ const Folder = ({
   setFolderChangingName,
   folderChangingNameInput,
   setFolderChangingNameInput,
-  changeFolderName
+  changeFolderName,
+  currentFolderRef
 }) => {
   const [fileToggle, setFileToggle] = useState(false);
   const { title, ref, files } = folder;
@@ -47,7 +51,9 @@ const Folder = ({
         >
           {fileToggle ? <OpenFolderIcon /> : <ClosedFolderIcon />}
           <div
-            className="folder-title"
+            className={`folder-title${
+              folder.ref === currentFolderRef ? "-selected" : ""
+            }`}
             onDoubleClick={handleDoubleClick}
             onKeyPress={handleKeyPress}
           >
@@ -75,7 +81,8 @@ const Folder = ({
 const mapStateToProps = state => ({
   selectFileByRef: ref => selectFileByRef(ref)(state),
   folderChangingName: state.user.folderChangingName,
-  folderChangingNameInput: state.user.folderChangingNameInput
+  folderChangingNameInput: state.user.folderChangingNameInput,
+  currentFolderRef: selectCurrentFolderRef(state)
 });
 
 const mapDispatchToProps = dispatch => ({

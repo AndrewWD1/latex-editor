@@ -1,4 +1,5 @@
 import { userActionTypes } from "./user.types";
+import { findFolderContainerFileRef } from "./user.utils";
 
 const INITIAL_STATE = {
   signedIn: false,
@@ -25,6 +26,11 @@ const INITIAL_STATE = {
       pdfLink: "https://andrewwd1.github.io/Doumont_Resume.pdf"
     }
   ],
+  currentFolder: {
+    ref: "Folder1",
+    title: "Folder1",
+    files: ["Folder1/File1.js", "Folder1/File2.tex"]
+  },
   currentFile: {
     ref: "Folder1/File1.js",
     title: "File1.js",
@@ -40,6 +46,9 @@ const INITIAL_STATE = {
 
 export const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case userActionTypes.SIGN_OUT:
+      return INITIAL_STATE;
+
     case userActionTypes.SET_CURRENT_USER:
       return action.payload;
 
@@ -56,6 +65,9 @@ export const userReducer = (state = INITIAL_STATE, action) => {
     case userActionTypes.SWITCH_CURRENT_FILE:
       return {
         ...state,
+        currentFolder:
+          findFolderContainerFileRef(action.payload.file.ref, state.Folders) ||
+          state.currentFolder,
         currentFile: action.payload.file,
         code: action.payload.file.text
       };

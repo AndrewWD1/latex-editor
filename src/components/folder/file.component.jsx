@@ -6,6 +6,7 @@ import {
   setFileChangingName,
   setFileChangingNameInput
 } from "../../redux/user/user.actions";
+import { selectCurrentFileRef } from "../../redux/user/user.selectors";
 
 import { ReactComponent as TexFile } from "../icons/tex-file.svg";
 import { ReactComponent as JSFile } from "../icons/js-file.svg";
@@ -34,6 +35,7 @@ const File = ({
   setFileChangingName,
   fileChangingNameInput,
   setFileChangingNameInput,
+  currentFileRef,
   changeFileName
 }) => {
   const { title, ref } = file;
@@ -51,7 +53,9 @@ const File = ({
   return (
     <div className="file">
       <div
-        className="file-title"
+        className={`file-title${
+          file.ref === currentFileRef ? "-selected" : ""
+        }`}
         onClick={() => switchCurrentFile(file)}
         onDoubleClick={handleDoubleClick}
         onKeyPress={handleKeyPress}
@@ -73,7 +77,8 @@ const File = ({
 
 const mapStateToProps = state => ({
   fileChangingName: state.user.fileChangingName,
-  fileChangingNameInput: state.user.fileChangingNameInput
+  fileChangingNameInput: state.user.fileChangingNameInput,
+  currentFileRef: selectCurrentFileRef(state)
 });
 
 const mapDispatchToProps = dispatch => ({

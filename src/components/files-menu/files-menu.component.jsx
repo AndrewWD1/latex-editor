@@ -1,15 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import { toggleFolders } from "../../redux/screen/screen.actions";
-import { saveTextToFile } from "../../redux/user/user.actions";
+import { saveTextToFile, signOut } from "../../redux/user/user.actions";
 import "./files-menu.styles.scss";
 
-const FilesMenu = ({ toggleFolders, saveTextToFile }) => {
+const FilesMenu = ({ toggleFolders, saveTextToFile, signOut }) => {
   const initialOptions = {
     Save: saveTextToFile,
     Folders: toggleFolders,
-    Profile: () => {},
-    "Other Options": () => {}
+    "Other Options": () => {},
+    "Sign Out": signOut
   };
 
   return (
@@ -26,6 +26,7 @@ const FilesMenu = ({ toggleFolders, saveTextToFile }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  signOut: () => dispatch(signOut()),
   toggleFolders: () => dispatch(toggleFolders()),
   saveTextToFile: () => dispatch(saveTextToFile())
 });

@@ -14,6 +14,26 @@ export const selectUserFiles = createSelector(
   user => user.Files
 );
 
+export const selectCurrentFolder = createSelector(
+  [selectUser],
+  user => user.currentFolder
+);
+
+export const selectCurrentFolderRef = createSelector(
+  [selectCurrentFolder],
+  currentFolder => currentFolder.ref
+);
+
+export const selectCurrentFile = createSelector(
+  [selectUser],
+  user => user.currentFile
+);
+
+export const selectCurrentFileRef = createSelector(
+  [selectCurrentFile],
+  currentFile => currentFile.ref
+);
+
 export const selectFileByRef = ref =>
   createSelector(
     [selectUserFiles],

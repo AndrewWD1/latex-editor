@@ -1,5 +1,9 @@
 import { userActionTypes } from "./user.types";
 
+export const signOut = () => ({
+  type: userActionTypes.SIGN_OUT
+});
+
 export const setCurrentUser = user => ({
   type: userActionTypes.SET_CURRENT_USER,
   payload: user

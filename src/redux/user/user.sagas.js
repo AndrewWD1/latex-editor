@@ -35,6 +35,22 @@ export function* fetchUser({ payload }) {
   }
 }
 
+export function* register({ payload }) {
+  try {
+    let res = yield fetch("https://thelatexeditor.com/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+    let user = yield res.json();
+    yield put(setCurrentUser(user));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export function* saveAndCompile() {
   const email = yield select(getEmail);
   const currentFile = yield select(getCurrentFile);
@@ -154,6 +170,10 @@ export function* onSignInDefaultStart() {
   yield takeLatest(userActionTypes.SIGN_IN_DEFAULT_START, fetchDefaultUser);
 }
 
+export function* onRegisterStart() {
+  yield takeLatest(userActionTypes.REGISTER_START, register);
+}
+
 export function* onSaveTextToFile() {
   yield takeLatest(userActionTypes.SAVE_TEXT_TO_FILE, saveAndCompile);
 }
@@ -179,6 +199,7 @@ export function* userSagas() {
     call(onSignInDefaultStart),
     call(onSignInStart),
     call(onSaveTextToFile),
+    call(onRegisterStart),
     call(onAddFile),
     call(onChangeFileName),
     call(onChangeFolderName),

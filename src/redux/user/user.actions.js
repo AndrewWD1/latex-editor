@@ -21,6 +21,15 @@ export const signInDefaultStart = () => ({
   type: userActionTypes.SIGN_IN_DEFAULT_START
 });
 
+export const registerStart = (name, email, password) => ({
+  type: userActionTypes.REGISTER_START,
+  payload: {
+    name,
+    email,
+    password
+  }
+});
+
 export const updateText = code => ({
   type: userActionTypes.CHANGE_TEXT,
   payload: code

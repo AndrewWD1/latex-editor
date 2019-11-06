@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import { signInStart } from "../../redux/user/user.actions";
+import { signInStart, registerStart } from "../../redux/user/user.actions";
 
 import "./sign-in.styles.scss";
 
-const SignIn = ({ signInStart }) => {
-  const [firstName, setFirstName] = useState("");
+const SignIn = ({ signInStart, registerStart }) => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,11 +16,11 @@ const SignIn = ({ signInStart }) => {
         LATEX EDITOR
         <br /> SIGN IN
       </div>
-      <label className="label">First Name</label>
+      <label className="label">Name</label>
       <input
-        value={firstName}
+        value={name}
         className="input"
-        onChange={e => setFirstName(e.target.value)}
+        onChange={e => setName(e.target.value)}
       />
       <label className="label">Email</label>
       <input
@@ -45,7 +45,7 @@ const SignIn = ({ signInStart }) => {
         </div>
         <div
           className="sign-in-button"
-          onClick={() => signInStart(email, password)}
+          onClick={() => registerStart(name, email, password)}
         >
           Register
         </div>
@@ -55,7 +55,9 @@ const SignIn = ({ signInStart }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  signInStart: (email, password) => dispatch(signInStart(email, password))
+  signInStart: (email, password) => dispatch(signInStart(email, password)),
+  registerStart: (name, email, password) =>
+    dispatch(registerStart(name, email, password))
 });
 
 export default connect(

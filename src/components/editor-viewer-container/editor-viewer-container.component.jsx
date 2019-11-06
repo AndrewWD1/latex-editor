@@ -10,6 +10,7 @@ import Viewer from "../viewer/viewer.component";
 import ResizeCover from "./resize-cover.component";
 import FolderContainer from "../folder-container/folder-container.component";
 import ResizeDivider from "./resize-divider.component";
+import SaveCompileButton from "../save-compile-button/save-compile-button.component";
 
 import "./editor-viewer-container.styles.scss";
 
@@ -31,6 +32,7 @@ const EditorViewerContainer = ({
     >
       <FolderContainer />
       <Editor />
+      <SaveCompileButton />
       <ResizeDivider />
       <ResizeCover />
       <Viewer folder={folder} file={file} />

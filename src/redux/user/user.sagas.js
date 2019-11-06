@@ -14,9 +14,7 @@ export function* fetchDefaultUser() {
     });
     let user = yield res.json();
     yield put(setCurrentUser(user));
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 }
 
 export function* fetchUser({ payload }) {
@@ -30,13 +28,16 @@ export function* fetchUser({ payload }) {
     });
     let user = yield res.json();
     yield put(setCurrentUser(user));
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 }
 
 export function* register({ payload }) {
+  const { email, password } = payload;
+
   try {
+    if (!email || !password) {
+      throw new Error("invalid email or password");
+    }
     let res = yield fetch("https://thelatexeditor.com/register", {
       method: "POST",
       headers: {
@@ -46,9 +47,7 @@ export function* register({ payload }) {
     });
     let user = yield res.json();
     yield put(setCurrentUser(user));
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 }
 
 export function* saveAndCompile() {
@@ -70,9 +69,7 @@ export function* saveAndCompile() {
     let user = yield res.json();
     yield put(setCurrentUser(user));
     yield put(toggleEditorViewer("both"));
-  } catch (error) {
-    console.error(error);
-  }
+  } catch (error) {}
 }
 
 export function* addFile({ payload: { folderRef } }) {
@@ -91,9 +88,7 @@ export function* addFile({ payload: { folderRef } }) {
     });
     let user = yield res.json();
     yield put(setCurrentUser(user));
-  } catch (error) {
-    console.error(error);
-  }
+  } catch (error) {}
 }
 
 export function* addFolder() {
@@ -111,9 +106,7 @@ export function* addFolder() {
     });
     let user = yield res.json();
     yield put(setCurrentUser(user));
-  } catch (error) {
-    console.error(error);
-  }
+  } catch (error) {}
 }
 
 export function* changeFileName({ payload: { ref, newName } }) {
@@ -134,9 +127,7 @@ export function* changeFileName({ payload: { ref, newName } }) {
     });
     let user = yield res.json();
     yield put(setCurrentUser(user));
-  } catch (error) {
-    console.error(error);
-  }
+  } catch (error) {}
 }
 
 export function* changeFolderName({ payload: { ref, newName } }) {
@@ -157,9 +148,7 @@ export function* changeFolderName({ payload: { ref, newName } }) {
     });
     let user = yield res.json();
     yield put(setCurrentUser(user));
-  } catch (error) {
-    console.error(error);
-  }
+  } catch (error) {}
 }
 
 export function* onSignInStart() {

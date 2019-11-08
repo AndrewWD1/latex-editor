@@ -8,7 +8,7 @@ import { handleResize } from "./redux/screen/screen.actions";
 
 import "./App.scss";
 
-const App = ({ signedIn, handleResize }) => {
+const App = ({ signedIn, handleResize, errorOnSignInOrRegister }) => {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => {
@@ -20,6 +20,9 @@ const App = ({ signedIn, handleResize }) => {
     return (
       <div className="not-signed-in">
         <SignIn />
+        {errorOnSignInOrRegister && (
+          <div className="error-message">{errorOnSignInOrRegister}</div>
+        )}
         <SignInSkip />
       </div>
     );
@@ -33,7 +36,8 @@ const App = ({ signedIn, handleResize }) => {
 };
 
 const mapStateToProps = state => ({
-  signedIn: state.user.signedIn
+  signedIn: state.user.signedIn,
+  errorOnSignInOrRegister: state.user.errorOnSignInOrRegister
 });
 
 const mapDipsatchToProps = dispatch => ({

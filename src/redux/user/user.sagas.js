@@ -2,7 +2,7 @@ import { all, call, takeLatest, put, select } from "redux-saga/effects";
 
 import { userActionTypes } from "./user.types";
 import { toggleEditorViewer } from "../screen/screen.actions";
-import { setCurrentUser } from "./user.actions";
+import { setCurrentUser, setErrorOnSignInOrRegister } from "./user.actions";
 
 export const getCurrentFile = state => state.user.currentFile;
 export const getEmail = state => state.user.email;
@@ -18,6 +18,14 @@ export function* fetchDefaultUser() {
 }
 
 export function* fetchUser({ payload }) {
+  const { email, password } = payload;
+
+  yield put(setErrorOnSignInOrRegister(null));
+
+  if (email === "" || password === "") {
+    yield put(setErrorOnSignInOrRegister("Invalid email or password"));
+    return;
+  }
   try {
     let res = yield fetch("https://thelatexeditor.com/sign-in", {
       method: "POST",
@@ -32,12 +40,18 @@ export function* fetchUser({ payload }) {
 }
 
 export function* register({ payload }) {
-  const { email, password } = payload;
+  const { name, email, password } = payload;
+
+  if (name === "") payload.name = "User";
+
+  yield put(setErrorOnSignInOrRegister(null));
+
+  if (email === "" || password === "") {
+    yield put(setErrorOnSignInOrRegister("Invalid email or password"));
+    return;
+  }
 
   try {
-    if (!email || !password) {
-      throw new Error("invalid email or password");
-    }
     let res = yield fetch("https://thelatexeditor.com/register", {
       method: "POST",
       headers: {

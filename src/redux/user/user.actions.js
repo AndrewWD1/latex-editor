@@ -100,3 +100,8 @@ export const setFileChangingNameInput = input => ({
     input
   }
 });
+
+export const setErrorOnSignInOrRegister = error => ({
+  type: userActionTypes.SET_ERROR_ON_SIGNIN_REGISTER,
+  payload: error
+});

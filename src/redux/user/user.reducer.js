@@ -41,7 +41,8 @@ const INITIAL_STATE = {
   folderChangingName: false,
   folderChangingNameInput: "",
   fileChangingName: false,
-  fileChangingNameInput: ""
+  fileChangingNameInput: "",
+  errorOnSignInOrRegister: null
 };
 
 export const userReducer = (state = INITIAL_STATE, action) => {
@@ -94,6 +95,12 @@ export const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         fileChangingNameInput: action.payload.input
+      };
+
+    case userActionTypes.SET_ERROR_ON_SIGNIN_REGISTER:
+      return {
+        ...state,
+        errorOnSignInOrRegister: action.payload
       };
 
     default:

@@ -1,14 +1,27 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import { signInStart, registerStart } from "../../redux/user/user.actions";
+import {
+  signInStart,
+  registerStart,
+  setErrorOnSignInOrRegister
+} from "../../redux/user/user.actions";
 
 import "./sign-in.styles.scss";
 
-const SignIn = ({ signInStart, registerStart }) => {
+const SignIn = ({
+  signInStart,
+  registerStart,
+  clearErrorOnSignInOrRegister
+}) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleChange = (e, fn) => {
+    clearErrorOnSignInOrRegister();
+    fn(e.target.value);
+  };
 
   return (
     <form className="sign-in">
@@ -20,21 +33,21 @@ const SignIn = ({ signInStart, registerStart }) => {
       <input
         value={name}
         className="input"
-        onChange={e => setName(e.target.value)}
+        onChange={e => handleChange(e, setName)}
       />
       <label className="label">Email</label>
       <input
         value={email}
         type={email}
         className="input"
-        onChange={e => setEmail(e.target.value)}
+        onChange={e => handleChange(e, setEmail)}
       />
       <label className="label">Password</label>
       <input
         type="password"
         value={password}
         className="input"
-        onChange={e => setPassword(e.target.value)}
+        onChange={e => handleChange(e, setPassword)}
       />
       <div className="sign-ins">
         <div
@@ -57,7 +70,8 @@ const SignIn = ({ signInStart, registerStart }) => {
 const mapDispatchToProps = dispatch => ({
   signInStart: (email, password) => dispatch(signInStart(email, password)),
   registerStart: (name, email, password) =>
-    dispatch(registerStart(name, email, password))
+    dispatch(registerStart(name, email, password)),
+  clearErrorOnSignInOrRegister: () => dispatch(setErrorOnSignInOrRegister(null))
 });
 
 export default connect(

@@ -44,15 +44,17 @@
     padding: 0.2rem 0;
     margin-left: 20px;
     border-bottom: 1px solid #080808;
-    cursor: pointer;
 
     .file-title {
+      display: flex;
+      flex-direction: row;
       width: auto;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
       position: relative;
       z-index: 100;
+      cursor: pointer;
 
       svg {
         margin-right: 0.3rem;
@@ -65,6 +67,8 @@
     }
 
     .file-title-selected {
+      display: flex;
+      flex-direction: row;
       width: auto;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -72,6 +76,7 @@
       position: relative;
       z-index: 100;
       color: white;
+      cursor: pointer;
 
       svg {
         margin-right: 0.3rem;
@@ -98,6 +103,7 @@
   justify-content: space-between;
   align-items: baseline;
   width: 30px;
+  cursor: pointer;
 }
 
 .add-files-button {

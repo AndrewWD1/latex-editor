@@ -3,7 +3,10 @@ import { connect } from "react-redux";
 import { removeFile } from "../../redux/user/user.actions";
 
 const RemoveFile = ({ fileRef, removeFile }) => (
-  <div onClick={() => removeFile(fileRef)} style={{ color: "black" }}>
+  <div
+    onClick={() => removeFile(fileRef)}
+    style={{ color: "black", cursor: "pointer" }}
+  >
     &#10005;
   </div>
 );

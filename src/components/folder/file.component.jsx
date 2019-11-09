@@ -58,8 +58,6 @@ const File = ({
         className={`file-title${
           file.ref === currentFileRef ? "-selected" : ""
         }`}
-        onClick={() => switchCurrentFile(file)}
-        onDoubleClick={handleDoubleClick}
         onKeyPress={handleKeyPress}
       >
         <FileSelector fileType={title.slice(title.lastIndexOf("."))} />
@@ -70,7 +68,12 @@ const File = ({
             onChange={e => setFileChangingNameInput(e.target.value)}
           />
         ) : (
-          title
+          <div
+            onClick={() => switchCurrentFile(file)}
+            onDoubleClick={handleDoubleClick}
+          >
+            {title}
+          </div>
         )}
       </div>
       <RemoveFile fileRef={ref} />

@@ -8,6 +8,8 @@ import {
 } from "../../redux/user/user.actions";
 import { selectCurrentFileRef } from "../../redux/user/user.selectors";
 
+import RemoveFile from "./remove-file.component";
+
 import { ReactComponent as TexFile } from "../icons/tex-file.svg";
 import { ReactComponent as JSFile } from "../icons/js-file.svg";
 
@@ -71,6 +73,7 @@ const File = ({
           title
         )}
       </div>
+      <RemoveFile fileRef={ref} />
     </div>
   );
 };

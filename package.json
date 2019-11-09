@@ -54,6 +54,7 @@
     "react-monaco-editor": "^0.31.0",
     "react-redux": "^7.1.1",
     "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
     "redux-saga": "^1.1.1",
     "reselect": "^4.0.0",
     "resolve": "1.12.0",

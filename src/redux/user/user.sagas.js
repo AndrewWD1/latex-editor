@@ -5,6 +5,8 @@ import { toggleEditorViewer } from "../screen/screen.actions";
 import { setCurrentUser, setErrorOnSignInOrRegister } from "./user.actions";
 
 export const getCurrentFile = state => state.user.currentFile;
+export const getCurrentFolderRef = state => state.user.currentFolder.ref;
+export const getCurrentFileRef = state => state.user.currentFile.ref;
 export const getEmail = state => state.user.email;
 
 export function* fetchDefaultUser() {
@@ -130,7 +132,6 @@ export function* changeFileName({ payload: { ref, newName } }) {
     ref,
     newName
   };
-  console.log(payload);
   try {
     let res = yield fetch("https://thelatexeditor.com/change-file-name", {
       method: "POST",
@@ -151,9 +152,59 @@ export function* changeFolderName({ payload: { ref, newName } }) {
     ref,
     newName
   };
-  console.log(payload);
   try {
     let res = yield fetch("https://thelatexeditor.com/change-folder-name", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+    let user = yield res.json();
+    yield put(setCurrentUser(user));
+  } catch (error) {}
+}
+
+export function* removeFolder({ payload: { ref } }) {
+  const email = yield select(getEmail);
+  const currentFolderRef = yield select(getCurrentFolderRef);
+
+  if (ref === currentFolderRef) {
+    alert("You cannot remove the current working folder");
+    return;
+  }
+  const payload = {
+    email,
+    ref
+  };
+  try {
+    let res = yield fetch("https://thelatexeditor.com/remove-folder", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+    let user = yield res.json();
+    yield put(setCurrentUser(user));
+  } catch (error) {}
+}
+
+export function* removeFile({ payload: { ref } }) {
+  const email = yield select(getEmail);
+  const currentFileRef = yield select(getCurrentFileRef);
+
+  if (ref === currentFileRef) {
+    alert("You cannot remove the current working file");
+    return;
+  }
+
+  const payload = {
+    email,
+    ref
+  };
+  try {
+    let res = yield fetch("https://thelatexeditor.com/remove-file", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -197,6 +248,14 @@ export function* onChangeFolderName() {
   yield takeLatest(userActionTypes.CHANGE_FOLDER_NAME, changeFolderName);
 }
 
+export function* onRemoveFolder() {
+  yield takeLatest(userActionTypes.REMOVE_FOLDER, removeFolder);
+}
+
+export function* onRemoveFile() {
+  yield takeLatest(userActionTypes.REMOVE_FILE, removeFile);
+}
+
 export function* userSagas() {
   yield all([
     call(onSignInDefaultStart),
@@ -206,6 +265,8 @@ export function* userSagas() {
     call(onAddFile),
     call(onChangeFileName),
     call(onChangeFolderName),
-    call(onAddFolder)
+    call(onAddFolder),
+    call(onRemoveFolder),
+    call(onRemoveFile)
   ]);
 }

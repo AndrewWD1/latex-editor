@@ -8,6 +8,10 @@ import { handleResize } from "./redux/screen/screen.actions";
 
 import "./App.scss";
 
+/**
+ * TODO: Refactor API calls to reduce the amount of data transferred
+ */
+
 const App = ({ signedIn, handleResize, errorOnSignInOrRegister }) => {
   useEffect(() => {
     window.addEventListener("resize", handleResize);

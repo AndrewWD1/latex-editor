@@ -105,3 +105,17 @@ export const setErrorOnSignInOrRegister = error => ({
   type: userActionTypes.SET_ERROR_ON_SIGNIN_REGISTER,
   payload: error
 });
+
+export const removeFile = ref => ({
+  type: userActionTypes.REMOVE_FILE,
+  payload: {
+    ref
+  }
+});
+
+export const removeFolder = ref => ({
+  type: userActionTypes.REMOVE_FOLDER,
+  payload: {
+    ref
+  }
+});

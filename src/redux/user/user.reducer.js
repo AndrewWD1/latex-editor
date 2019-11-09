@@ -51,7 +51,12 @@ export const userReducer = (state = INITIAL_STATE, action) => {
       return INITIAL_STATE;
 
     case userActionTypes.SET_CURRENT_USER:
-      return action.payload;
+      return {
+        ...action.payload,
+        currentFile: state.currentFile,
+        currentFolder: state.currentFolder,
+        code: state.code
+      };
 
     case userActionTypes.CHANGE_TEXT:
       return {

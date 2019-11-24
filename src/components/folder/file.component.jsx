@@ -69,6 +69,7 @@ const File = ({
           />
         ) : (
           <div
+            style={{ cursor: "pointer" }}
             onClick={() => switchCurrentFile(file)}
             onDoubleClick={handleDoubleClick}
           >
@@ -94,7 +95,4 @@ const mapDispatchToProps = dispatch => ({
   setFileChangingNameInput: input => dispatch(setFileChangingNameInput(input))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(File);
+export default connect(mapStateToProps, mapDispatchToProps)(File);

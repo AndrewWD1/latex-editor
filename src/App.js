@@ -23,7 +23,7 @@ const App = ({ signedIn, handleResize, errorOnSignInOrRegister }) => {
   if (!signedIn)
     return (
       <div className="not-signed-in">
-        <SignIn />
+        <SignIn error={errorOnSignInOrRegister} />
         {errorOnSignInOrRegister && (
           <div className="error-message">{errorOnSignInOrRegister}</div>
         )}
@@ -48,7 +48,4 @@ const mapDipsatchToProps = dispatch => ({
   handleResize: () => dispatch(handleResize())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDipsatchToProps
-)(App);
+export default connect(mapStateToProps, mapDipsatchToProps)(App);

@@ -544,10 +544,10 @@ module.exports = function(webpackEnv) {
             : undefined
         )
       ),
-      new MonacoWebpackPlugin({
-        // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
-        languages: ["javascript", "python"]
-      }),
+      // new MonacoWebpackPlugin({
+      //   // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
+      //   languages: ["javascript", "python"]
+      // }),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358

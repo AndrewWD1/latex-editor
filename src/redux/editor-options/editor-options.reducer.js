@@ -9,7 +9,6 @@
 import { editorOptionsActionTypes } from "./editor-options.types";
 
 const INITIAL_STATE = {
-  language: "javascript",
   theme: "vs-dark",
   font: "Fira Code",
   fontLigatures: true
@@ -17,11 +16,6 @@ const INITIAL_STATE = {
 
 export const editorOptionsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case editorOptionsActionTypes.CHANGE_LANGUAGE:
-      return {
-        ...state,
-        language: action.payload
-      };
     case editorOptionsActionTypes.CHANGE_THEME:
       return {
         ...state,

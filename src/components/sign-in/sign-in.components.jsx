@@ -12,14 +12,15 @@ import "./sign-in.styles.scss";
 const SignIn = ({
   signInStart,
   registerStart,
-  clearErrorOnSignInOrRegister
+  clearErrorOnSignInOrRegister,
+  errorOnSignInOrRegister
 }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleChange = (e, fn) => {
-    clearErrorOnSignInOrRegister();
+    if (errorOnSignInOrRegister) clearErrorOnSignInOrRegister();
     fn(e.target.value);
   };
 
@@ -67,6 +68,10 @@ const SignIn = ({
   );
 };
 
+const mapStateToProps = state => ({
+  errorOnSignInOrRegister: state.user.errorOnSignInOrRegister
+});
+
 const mapDispatchToProps = dispatch => ({
   signInStart: (email, password) => dispatch(signInStart(email, password)),
   registerStart: (name, email, password) =>
@@ -74,7 +79,4 @@ const mapDispatchToProps = dispatch => ({
   clearErrorOnSignInOrRegister: () => dispatch(setErrorOnSignInOrRegister(null))
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

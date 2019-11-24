@@ -1,23 +1,14 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import {
-  changeLangauge,
   changeTheme,
   changeFont,
   toggleLigatures
 } from "../../redux/editor-options/editor-options.actions";
 import "./editor-options-menu.styles.scss";
 
-const EditorOptionsMenu = ({
-  changeLangauge,
-  changeFont,
-  changeTheme,
-  toggleLigatures
-}) => {
+const EditorOptionsMenu = ({ changeFont, changeTheme, toggleLigatures }) => {
   const initialOptions = {
-    Language: () => {
-      setOptionItems(langaugeOptions);
-    },
     Theme: () => {
       setOptionItems(themeOptions);
     },
@@ -28,11 +19,7 @@ const EditorOptionsMenu = ({
       toggleLigatures();
     }
   };
-  const langaugeOptions = {
-    Latex: () => changeLangauge("latex"),
-    JavaScript: () => changeLangauge("javascript"),
-    Python: () => changeLangauge("python")
-  };
+
   const themeOptions = {
     vs: () => changeTheme("vs"),
     "vs-dark": () => changeTheme("vs-dark"),
@@ -65,13 +52,9 @@ const EditorOptionsMenu = ({
 };
 
 const mapDispatchToProps = dispatch => ({
-  changeLangauge: langauge => dispatch(changeLangauge(langauge)),
   changeFont: font => dispatch(changeFont(font)),
   changeTheme: theme => dispatch(changeTheme(theme)),
   toggleLigatures: () => dispatch(toggleLigatures())
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(EditorOptionsMenu);
+export default connect(null, mapDispatchToProps)(EditorOptionsMenu);

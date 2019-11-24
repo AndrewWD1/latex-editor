@@ -51,6 +51,9 @@ export const userReducer = (state = INITIAL_STATE, action) => {
       return INITIAL_STATE;
 
     case userActionTypes.SET_CURRENT_USER:
+      //This line is added to ensure that when user initially signs in they get there current code updated
+      if (!state.email) return { ...action.payload };
+
       return {
         ...action.payload,
         currentFile: state.currentFile,

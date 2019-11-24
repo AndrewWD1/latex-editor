@@ -5,6 +5,7 @@ import { toggleEditorViewer } from "../screen/screen.actions";
 import { setCurrentUser, setErrorOnSignInOrRegister } from "./user.actions";
 
 export const getCurrentFile = state => state.user.currentFile;
+export const getCurrentFolder = state => state.user.currentFolder;
 export const getCurrentFolderRef = state => state.user.currentFolder.ref;
 export const getCurrentFileRef = state => state.user.currentFile.ref;
 export const getEmail = state => state.user.email;
@@ -168,6 +169,8 @@ export function* changeFolderName({ payload: { ref, newName } }) {
 export function* removeFolder({ payload: { ref } }) {
   const email = yield select(getEmail);
   const currentFolderRef = yield select(getCurrentFolderRef);
+  const currentFolder = yield select(getCurrentFolder);
+  const currentFile = yield select(getCurrentFile);
 
   if (ref === currentFolderRef) {
     alert("You cannot remove the current working folder");
@@ -175,7 +178,9 @@ export function* removeFolder({ payload: { ref } }) {
   }
   const payload = {
     email,
-    ref
+    ref,
+    currentFolder,
+    currentFile
   };
   try {
     let res = yield fetch("https://thelatexeditor.com/remove-folder", {
@@ -193,6 +198,7 @@ export function* removeFolder({ payload: { ref } }) {
 export function* removeFile({ payload: { ref } }) {
   const email = yield select(getEmail);
   const currentFileRef = yield select(getCurrentFileRef);
+  const currentFile = yield select(getCurrentFile);
 
   if (ref === currentFileRef) {
     alert("You cannot remove the current working file");
@@ -201,7 +207,8 @@ export function* removeFile({ payload: { ref } }) {
 
   const payload = {
     email,
-    ref
+    ref,
+    currentFile
   };
   try {
     let res = yield fetch("https://thelatexeditor.com/remove-file", {

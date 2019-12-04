@@ -26,7 +26,7 @@ export function* fetchUser({ payload }) {
   yield put(setErrorOnSignInOrRegister(null));
 
   if (email === "" || password === "") {
-    yield put(setErrorOnSignInOrRegister("Invalid email or password"));
+    yield put(setErrorOnSignInOrRegister("Password or email cannot be empty"));
     return;
   }
   try {
@@ -37,8 +37,13 @@ export function* fetchUser({ payload }) {
       },
       body: JSON.stringify(payload)
     });
-    let user = yield res.json();
-    yield put(setCurrentUser(user));
+    if (res.status === 404) {
+      let errorText = yield res.text();
+      yield put(setErrorOnSignInOrRegister(errorText));
+    } else {
+      let user = yield res.json();
+      yield put(setCurrentUser(user));
+    }
   } catch (error) {}
 }
 
@@ -62,8 +67,13 @@ export function* register({ payload }) {
       },
       body: JSON.stringify(payload)
     });
-    let user = yield res.json();
-    yield put(setCurrentUser(user));
+    if (res.status === 404) {
+      let errorText = yield res.text();
+      yield put(setErrorOnSignInOrRegister(errorText));
+    } else {
+      let user = yield res.json();
+      yield put(setCurrentUser(user));
+    }
   } catch (error) {}
 }
 

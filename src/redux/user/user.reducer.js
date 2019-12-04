@@ -3,6 +3,7 @@ import { findFolderContainerFileRef } from "./user.utils";
 
 const INITIAL_STATE = {
   signedIn: false,
+  loading: false,
   name: null,
   email: null,
   Folders: [

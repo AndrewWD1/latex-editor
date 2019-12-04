@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  
 }
 
 .not-signed-in {
@@ -17,4 +19,10 @@
     font-size: 1.2rem;
     text-transform: uppercase;
   }
+
+  
+}
+
+.loading {
+  cursor: wait;
 }

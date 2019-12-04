@@ -59,7 +59,8 @@ export const userReducer = (state = INITIAL_STATE, action) => {
         ...action.payload,
         currentFile: state.currentFile,
         currentFolder: state.currentFolder,
-        code: state.code
+        code: state.code,
+        loading: false
       };
 
     case userActionTypes.CHANGE_TEXT:
@@ -110,6 +111,12 @@ export const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         errorOnSignInOrRegister: action.payload
+      };
+
+    case userActionTypes.SET_FETCHING:
+      return {
+        ...state,
+        loading: action.payload.value
       };
 
     default:

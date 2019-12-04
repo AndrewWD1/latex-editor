@@ -119,3 +119,10 @@ export const removeFolder = ref => ({
     ref
   }
 });
+
+export const setFetching = value => ({
+  type: userActionTypes.SET_FETCHING,
+  payload: {
+    value
+  }
+});

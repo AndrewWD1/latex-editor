@@ -2,7 +2,11 @@ import { all, call, takeLatest, put, select } from "redux-saga/effects";
 
 import { userActionTypes } from "./user.types";
 import { toggleEditorViewer } from "../screen/screen.actions";
-import { setCurrentUser, setErrorOnSignInOrRegister } from "./user.actions";
+import {
+  setCurrentUser,
+  setErrorOnSignInOrRegister,
+  setFetching
+} from "./user.actions";
 
 export const getCurrentFile = state => state.user.currentFile;
 export const getCurrentFolder = state => state.user.currentFolder;
@@ -11,12 +15,21 @@ export const getCurrentFileRef = state => state.user.currentFile.ref;
 export const getEmail = state => state.user.email;
 
 export function* fetchDefaultUser() {
+  yield put(setFetching(true));
+
   try {
     let res = yield fetch("https://thelatexeditor.com/testuser", {
       method: "GET"
     });
-    let user = yield res.json();
-    yield put(setCurrentUser(user));
+
+    if (res.status === 404) {
+      yield put(setFetching(false));
+      let errorText = yield res.text();
+      yield put(setErrorOnSignInOrRegister(errorText));
+    } else {
+      let user = yield res.json();
+      yield put(setCurrentUser(user));
+    }
   } catch (error) {}
 }
 
@@ -24,6 +37,7 @@ export function* fetchUser({ payload }) {
   const { email, password } = payload;
 
   yield put(setErrorOnSignInOrRegister(null));
+  yield put(setFetching(true));
 
   if (email === "" || password === "") {
     yield put(setErrorOnSignInOrRegister("Password or email cannot be empty"));
@@ -38,6 +52,7 @@ export function* fetchUser({ payload }) {
       body: JSON.stringify(payload)
     });
     if (res.status === 404) {
+      yield put(setFetching(false));
       let errorText = yield res.text();
       yield put(setErrorOnSignInOrRegister(errorText));
     } else {
@@ -53,6 +68,7 @@ export function* register({ payload }) {
   if (name === "") payload.name = "User";
 
   yield put(setErrorOnSignInOrRegister(null));
+  yield put(setFetching(true));
 
   if (email === "" || password === "") {
     yield put(setErrorOnSignInOrRegister("Invalid email or password"));
@@ -68,6 +84,7 @@ export function* register({ payload }) {
       body: JSON.stringify(payload)
     });
     if (res.status === 404) {
+      yield put(setFetching(false));
       let errorText = yield res.text();
       yield put(setErrorOnSignInOrRegister(errorText));
     } else {
@@ -85,6 +102,7 @@ export function* saveAndCompile() {
     currentFile
   };
   yield put(toggleEditorViewer("viewer"));
+  yield put(setFetching(true));
   try {
     let res = yield fetch("https://thelatexeditor.com/save-and-compile", {
       method: "POST",
@@ -96,6 +114,7 @@ export function* saveAndCompile() {
     let user = yield res.json();
     yield put(setCurrentUser(user));
     yield put(toggleEditorViewer("both"));
+    yield put(setFetching(false));
   } catch (error) {}
 }
 

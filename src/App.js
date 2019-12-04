@@ -8,7 +8,13 @@ import { handleResize } from "./redux/screen/screen.actions";
 
 import "./App.scss";
 
-const App = ({ signedIn, handleResize, errorOnSignInOrRegister }) => {
+/**
+ * TODO: Show if error if the server responds with error
+ * TODO: Show loading state while loading
+ *
+ */
+
+const App = ({ signedIn, handleResize, errorOnSignInOrRegister, loading }) => {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => {
@@ -18,7 +24,7 @@ const App = ({ signedIn, handleResize, errorOnSignInOrRegister }) => {
 
   if (!signedIn)
     return (
-      <div className="not-signed-in">
+      <div className={`not-signed-in${loading ? " loading" : ""}`}>
         <SignIn error={errorOnSignInOrRegister} />
         {errorOnSignInOrRegister && (
           <div className="error-message">{errorOnSignInOrRegister}</div>
@@ -28,7 +34,7 @@ const App = ({ signedIn, handleResize, errorOnSignInOrRegister }) => {
     );
 
   return (
-    <div className="app">
+    <div className={`app${loading ? " loading" : ""}`}>
       <Header />
       <EditorViewerContainer />
     </div>
@@ -37,7 +43,8 @@ const App = ({ signedIn, handleResize, errorOnSignInOrRegister }) => {
 
 const mapStateToProps = state => ({
   signedIn: state.user.signedIn,
-  errorOnSignInOrRegister: state.user.errorOnSignInOrRegister
+  errorOnSignInOrRegister: state.user.errorOnSignInOrRegister,
+  loading: state.user.loading
 });
 
 const mapDipsatchToProps = dispatch => ({

@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "95f786fc2c1a6941a4d9063b6f68a6e7",
+    "revision": "ecead341612259580d84a17cb657d02f",
     "url": "/latex-editor/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/latex-editor/static/css/2.98dcf82b.chunk.css"
   },
   {
-    "revision": "3ffd45ff69a3f47df6e9",
+    "revision": "6203beb60336cdd09cd3",
     "url": "/latex-editor/static/css/main.297e6b87.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/latex-editor/static/js/2.a602d958.chunk.js"
   },
   {
-    "revision": "3ffd45ff69a3f47df6e9",
-    "url": "/latex-editor/static/js/main.feacb76a.chunk.js"
+    "revision": "6203beb60336cdd09cd3",
+    "url": "/latex-editor/static/js/main.d90e5d97.chunk.js"
   },
   {
     "revision": "346e6bd94fae5df69723",

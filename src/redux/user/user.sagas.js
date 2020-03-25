@@ -41,6 +41,7 @@ export function* fetchUser({ payload }) {
 
   if (email === "" || password === "") {
     yield put(setErrorOnSignInOrRegister("Password or email cannot be empty"));
+    yield put(setFetching(false));
     return;
   }
   try {
@@ -72,6 +73,7 @@ export function* register({ payload }) {
 
   if (email === "" || password === "") {
     yield put(setErrorOnSignInOrRegister("Invalid email or password"));
+    yield put(setFetching(false));
     return;
   }
 

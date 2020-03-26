@@ -16,6 +16,11 @@
   -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
 
+  &--small {
+    top: 40px;
+    left: 70px;
+  }
+
   .editor-options-items {
     padding-bottom: 1rem;
     display: flex;

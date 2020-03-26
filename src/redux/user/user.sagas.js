@@ -13,6 +13,7 @@ export const getCurrentFolder = state => state.user.currentFolder;
 export const getCurrentFolderRef = state => state.user.currentFolder.ref;
 export const getCurrentFileRef = state => state.user.currentFile.ref;
 export const getEmail = state => state.user.email;
+export const getWidth = state => state.screen.windowWidth;
 
 export function* fetchDefaultUser() {
   yield put(setFetching(true));
@@ -115,7 +116,13 @@ export function* saveAndCompile() {
     });
     let user = yield res.json();
     yield put(setCurrentUser(user));
-    yield put(toggleEditorViewer("both"));
+    const width = yield select(getWidth);
+
+    if (width > 860) {
+      yield put(toggleEditorViewer("both"));
+    } else {
+      yield put(toggleEditorViewer("editor"));
+    }
     yield put(setFetching(false));
   } catch (error) {}
 }

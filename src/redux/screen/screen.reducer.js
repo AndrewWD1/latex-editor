@@ -18,7 +18,7 @@ export const screenReducer = (state = INITIAL_STATE, action) => {
         windowWidth: window.innerWidth
       };
     case screenActionTypes.TOGGLE_EDITOR_VIEWER:
-      if (state.editorViewerToggle === action.payload) {
+      if (state.editorViewerToggle === action.payload && state.windowWidth > 856) {
         return {
           ...state,
           editorViewerToggle: "both"

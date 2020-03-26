@@ -3,17 +3,11 @@ import EditorViewerContainer from "./components/editor-viewer-container/editor-v
 import Header from "./components/header/header.component";
 import SignIn from "./components/sign-in/sign-in.components";
 import SignInSkip from "./components/sign-in/sign-in-skip.component";
-import SmallScreenMessage from "./components/small-screen-message/small-screen-message.component";
 import { connect } from "react-redux";
 import { handleResize } from "./redux/screen/screen.actions";
+import { toggleEditorViewer } from "./redux/screen/screen.actions";
 
 import "./App.scss";
-
-/**
- * TODO: Show if error if the server responds with error
- * TODO: Show loading state while loading
- *
- */
 
 const App = ({
   signedIn,
@@ -21,16 +15,22 @@ const App = ({
   errorOnSignInOrRegister,
   loading,
   width,
-  height
+  height,
+  toggleEditorViewer
 }) => {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", handleResize);
+    handleResize();
+    if (width < 860) {
+      toggleEditorViewer("viewer");
+    }
+
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("orientationchange", handleResize);
     };
   });
-
-  if (width < 850 || height < 300) return <SmallScreenMessage />;
 
   if (!signedIn)
     return (
@@ -60,7 +60,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDipsatchToProps = dispatch => ({
-  handleResize: () => dispatch(handleResize())
+  handleResize: () => dispatch(handleResize()),
+  toggleEditorViewer: str => dispatch(toggleEditorViewer(str))
 });
 
 export default connect(mapStateToProps, mapDipsatchToProps)(App);

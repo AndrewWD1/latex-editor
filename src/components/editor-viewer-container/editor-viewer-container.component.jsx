@@ -10,12 +10,14 @@ import Viewer from "../viewer/viewer.component";
 import ResizeCover from "./resize-cover.component";
 import FolderContainer from "../folder-container/folder-container.component";
 import ResizeDivider from "./resize-divider.component";
-import SaveCompileButton from "../save-compile-button/save-compile-button.component";
+import SaveCompileButton from "../buttons/save-compile-button.component";
+import SmallScreenToggler from "../buttons/small-screen-toggler.component";
 
 import "./editor-viewer-container.styles.scss";
 
 const EditorViewerContainer = ({
   height,
+  width,
   closeDropdownsOnClick,
   folder,
   file,
@@ -32,6 +34,7 @@ const EditorViewerContainer = ({
     >
       <FolderContainer />
       <Editor />
+      {width < 860 && <SmallScreenToggler />}
       <SaveCompileButton />
       <ResizeDivider />
       <ResizeCover />
@@ -42,6 +45,7 @@ const EditorViewerContainer = ({
 
 const mapStateToProps = state => ({
   height: state.screen.windowHeight,
+  width: state.screen.windowWidth,
   editorViewerToggle: state.screen.editorViewerToggle,
   dropdownMenuClicked: state.dropdownMenu.dropdownMenuClicked,
   folder: state.user.currentFolder,

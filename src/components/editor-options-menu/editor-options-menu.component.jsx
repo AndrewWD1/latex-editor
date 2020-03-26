@@ -7,7 +7,12 @@ import {
 } from "../../redux/editor-options/editor-options.actions";
 import "./editor-options-menu.styles.scss";
 
-const EditorOptionsMenu = ({ changeFont, changeTheme, toggleLigatures }) => {
+const EditorOptionsMenu = ({
+  changeFont,
+  changeTheme,
+  toggleLigatures,
+  width
+}) => {
   const initialOptions = {
     Theme: () => {
       setOptionItems(themeOptions);
@@ -35,7 +40,10 @@ const EditorOptionsMenu = ({ changeFont, changeTheme, toggleLigatures }) => {
   const [optionItems, setOptionItems] = useState(initialOptions);
 
   return (
-    <div className="editor-options-menu">
+    <div
+      className={`editor-options-menu ${width < 860 &&
+        "editor-options-menu--small"}`}
+    >
       <div className="editor-options-items">
         {Object.keys(optionItems).map(item => (
           <div
@@ -51,10 +59,14 @@ const EditorOptionsMenu = ({ changeFont, changeTheme, toggleLigatures }) => {
   );
 };
 
+const mapStateToProps = state => ({
+  width: state.screen.windowWidth
+});
+
 const mapDispatchToProps = dispatch => ({
   changeFont: font => dispatch(changeFont(font)),
   changeTheme: theme => dispatch(changeTheme(theme)),
   toggleLigatures: () => dispatch(toggleLigatures())
 });
 
-export default connect(null, mapDispatchToProps)(EditorOptionsMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(EditorOptionsMenu);

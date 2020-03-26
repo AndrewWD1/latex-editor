@@ -11,14 +11,20 @@ import "./header.styles.scss";
 const Header = ({
   dropdownMenuClicked,
   changeDropdowns,
-  toggleEditorViewer
+  toggleEditorViewer,
+  width
 }) => {
   return (
-    <div className="header">
-      <div className="title">Latex Editor</div>
-      <div className="dropper-container">
+    <div className={`header ${width < 860 && "header--small"}`}>
+      <div className={`title ${width < 860 && "title--small"}`}>
+        Latex Editor
+      </div>
+      <div
+        className={`dropper-container ${width < 860 &&
+          "dropper-container--small"}`}
+      >
         <div
-          className="dropper"
+          className={`dropper ${width < 860 && "dropper--small"}`}
           onClick={() => changeDropdowns(dropdownMenuDropped.FILES_OPEN)}
           onMouseOver={() => {
             if (
@@ -34,7 +40,7 @@ const Header = ({
           <FilesMenu />
         ) : null}
         <div
-          className="dropper"
+          className={`dropper ${width < 860 && "dropper--small"}`}
           onClick={() =>
             changeDropdowns(dropdownMenuDropped.EDITOR_OPTIONS_OPEN)
           }
@@ -49,41 +55,48 @@ const Header = ({
         {dropdownMenuClicked === dropdownMenuDropped.EDITOR_OPTIONS_OPEN ? (
           <EditorOptionsMenu />
         ) : null}
-        <div
-          className="dropper"
-          onClick={() => toggleEditorViewer("editor")}
-          onMouseOver={() => {
-            if (
-              dropdownMenuClicked === dropdownMenuDropped.EDITOR_OPTIONS_OPEN ||
-              dropdownMenuClicked === dropdownMenuDropped.FILES_OPEN
-            ) {
-              changeDropdowns(dropdownMenuDropped.DROPDOWNS_CLOSED);
-            }
-          }}
-        >
-          Toggle Editor
-        </div>
-        <div
-          className="dropper"
-          onClick={() => toggleEditorViewer("viewer")}
-          onMouseOver={() => {
-            if (
-              dropdownMenuClicked === dropdownMenuDropped.EDITOR_OPTIONS_OPEN ||
-              dropdownMenuClicked === dropdownMenuDropped.FILES_OPEN
-            ) {
-              changeDropdowns(dropdownMenuDropped.DROPDOWNS_CLOSED);
-            }
-          }}
-        >
-          Toggle Viewer
-        </div>
+        {width > 860 && (
+          <div
+            className="dropper"
+            onClick={() => toggleEditorViewer("editor")}
+            onMouseOver={() => {
+              if (
+                dropdownMenuClicked ===
+                  dropdownMenuDropped.EDITOR_OPTIONS_OPEN ||
+                dropdownMenuClicked === dropdownMenuDropped.FILES_OPEN
+              ) {
+                changeDropdowns(dropdownMenuDropped.DROPDOWNS_CLOSED);
+              }
+            }}
+          >
+            Toggle Editor
+          </div>
+        )}
+        {width > 860 && (
+          <div
+            className="dropper"
+            onClick={() => toggleEditorViewer("viewer")}
+            onMouseOver={() => {
+              if (
+                dropdownMenuClicked ===
+                  dropdownMenuDropped.EDITOR_OPTIONS_OPEN ||
+                dropdownMenuClicked === dropdownMenuDropped.FILES_OPEN
+              ) {
+                changeDropdowns(dropdownMenuDropped.DROPDOWNS_CLOSED);
+              }
+            }}
+          >
+            Toggle Viewer
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
 const mapStateToProps = state => ({
-  dropdownMenuClicked: state.dropdownMenu.dropdownMenuClicked
+  dropdownMenuClicked: state.dropdownMenu.dropdownMenuClicked,
+  width: state.screen.windowWidth
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -91,7 +104,4 @@ const mapDispatchToProps = dispatch => ({
   toggleEditorViewer: component => dispatch(toggleEditorViewer(component))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

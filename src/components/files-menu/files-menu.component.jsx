@@ -8,7 +8,6 @@ const FilesMenu = ({ toggleFolders, saveTextToFile, signOut, width }) => {
   const initialOptions = {
     Save: saveTextToFile,
     Folders: toggleFolders,
-    "Other Options": () => {},
     "Sign Out": signOut
   };
 

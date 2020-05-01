@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/latex-editor/static/css/main.088fd242.chunk.css",
-    "main.js": "/latex-editor/static/js/main.2f10cc1c.chunk.js",
-    "main.js.map": "/latex-editor/static/js/main.2f10cc1c.chunk.js.map",
+    "main.js": "/latex-editor/static/js/main.e976667a.chunk.js",
+    "main.js.map": "/latex-editor/static/js/main.e976667a.chunk.js.map",
     "runtime-main.js": "/latex-editor/static/js/runtime-main.ea0aeb11.js",
     "runtime-main.js.map": "/latex-editor/static/js/runtime-main.ea0aeb11.js.map",
     "static/css/2.5f978528.chunk.css": "/latex-editor/static/css/2.5f978528.chunk.css",
-    "static/js/2.dbf9afae.chunk.js": "/latex-editor/static/js/2.dbf9afae.chunk.js",
-    "static/js/2.dbf9afae.chunk.js.map": "/latex-editor/static/js/2.dbf9afae.chunk.js.map",
+    "static/js/2.ca29aa92.chunk.js": "/latex-editor/static/js/2.ca29aa92.chunk.js",
+    "static/js/2.ca29aa92.chunk.js.map": "/latex-editor/static/js/2.ca29aa92.chunk.js.map",
     "index.html": "/latex-editor/index.html",
-    "precache-manifest.43edc367b942393d75b12638e8ca37e8.js": "/latex-editor/precache-manifest.43edc367b942393d75b12638e8ca37e8.js",
+    "precache-manifest.f35ee4fae8ded9cbc1d267ec6d4ce234.js": "/latex-editor/precache-manifest.f35ee4fae8ded9cbc1d267ec6d4ce234.js",
     "service-worker.js": "/latex-editor/service-worker.js",
     "static/css/2.5f978528.chunk.css.map": "/latex-editor/static/css/2.5f978528.chunk.css.map",
     "static/css/main.088fd242.chunk.css.map": "/latex-editor/static/css/main.088fd242.chunk.css.map",
@@ -22,8 +22,8 @@
   "entrypoints": [
     "static/js/runtime-main.ea0aeb11.js",
     "static/css/2.5f978528.chunk.css",
-    "static/js/2.dbf9afae.chunk.js",
+    "static/js/2.ca29aa92.chunk.js",
     "static/css/main.088fd242.chunk.css",
-    "static/js/main.2f10cc1c.chunk.js"
+    "static/js/main.e976667a.chunk.js"
   ]
 }

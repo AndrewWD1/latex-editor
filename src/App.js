@@ -16,7 +16,7 @@ const App = ({
   loading,
   width,
   height,
-  toggleEditorViewer
+  toggleEditorViewer,
 }) => {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -51,17 +51,17 @@ const App = ({
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   signedIn: state.user.signedIn,
   errorOnSignInOrRegister: state.user.errorOnSignInOrRegister,
   loading: state.user.loading,
   width: state.screen.windowWidth,
-  height: state.screen.windowHeight
+  height: state.screen.windowHeight,
 });
 
-const mapDipsatchToProps = dispatch => ({
+const mapDipsatchToProps = (dispatch) => ({
   handleResize: () => dispatch(handleResize()),
-  toggleEditorViewer: str => dispatch(toggleEditorViewer(str))
+  toggleEditorViewer: (str) => dispatch(toggleEditorViewer(str)),
 });
 
 export default connect(mapStateToProps, mapDipsatchToProps)(App);

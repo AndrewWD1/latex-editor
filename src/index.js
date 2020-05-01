@@ -6,7 +6,16 @@ import App from "./App";
 
 render(
   <Provider store={store}>
-    <App />
+    <div
+      style={{
+        color: "white",
+        textAlign: "center",
+        fontSize: "2rem",
+        margin: "2rem",
+      }}
+    >
+      This site has been taken down for the time being.
+    </div>
   </Provider>,
   document.getElementById("root")
 );

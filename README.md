@@ -1,5 +1,7 @@
 # Latex Editor
 
+## This site has been taken down for the time being
+
 ## https://thelatexeditor.com
 
 A web application that allows you to write and compile latex documents in your browser
